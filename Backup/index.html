@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Witchcraft Card Game</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="home">
+      <div class="home-card">
+        <h1>Witchcraft</h1>
+        <div class="controls">
+          <label for="playerCount">Players</label>
+          <select id="playerCount" aria-label="Number of players">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <button id="startBtn" class="primary">Start Game</button>
+      </div>
+    </div>
+
+    <div id="game" class="hidden">
+      <header class="topbar">
+        <div class="turn">
+          <button id="prevPlayer" title="Previous player">◀</button>
+          <div>Active Player: <span id="activePlayerName">Player 1</span></div>
+          <button id="nextPlayer" title="Next player">▶</button>
+        </div>
+        <div class="deck-info">
+          <div id="phaseText">Phase: Draw</div>
+          <div id="deckCount">Deck: 0</div>
+          <div id="blockedText"></div>
+          <div id="roundCounter">Round: 1</div>
+        </div>
+      </header>
+
+      <main class="table">
+        <section class="center">
+          <div id="deck" class="deck" title="Draw pile"></div>
+        </section>
+        <section id="players" class="players"></section>
+      </main>
+    </div>
+
+    <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal">
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
+

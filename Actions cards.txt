@@ -1,0 +1,47 @@
+🕯 Circle Breaker
+
+Skip the next player's turn
+
+Target Disruption
+
+🔁 Twist of Fate
+
+Reverse direction of play
+
+Global Tempo
+
+🐍 Venom Brew
+
+Target player discards 1 random card
+
+Target Attack
+
+🔮 Astral Projection
+
+Peek top 3 cards of draw pile, keep 1, reorder rest
+
+Strategic Draw
+
+🧃 Foul Elixir
+
+Drawer discards 2 random cards
+
+Self Penalty
+
+🪄 Crackling Cauldron
+
+Draw 2 extra cards, then discard 2 (after melds)
+
+Chaotic Bonus
+
+🕸 Hex Seal
+
+Block a category of your choice for all players for 1 round
+
+Global Disruption
+
+Thiefs Gamble
+
+pick a card from opponents hand to keep, discard 1 of our choosing
+
+Target Disruption

@@ -1,10 +1,6 @@
-/10ed01add29f3455ac8feca4ffb333c5.jpg
-/Actions cards.txt
-/Backup
-/Capture.JPG
-/CardGame.kra
-/CardGame.kra~
-/cards.kra
-/cd4efd960243ded07518f4b1b84e4f8a.jpg
-/ChatGPT Image Jun 4, 2025, 11_41_52 AM.png
-/LAB-C-19123-D_LAB-P-96803-L_Cards
+﻿node_modules/
+server/node_modules/
+.env
+.DS_Store
+Thumbs.db
+npm-debug.log*
