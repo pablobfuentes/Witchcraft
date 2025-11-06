@@ -1,0 +1,427 @@
+IV73-TGT3
+I. Core Objective (Per Round):
+Be the first player to form and meld three (3) complete sets.
+Each of these three sets must be from a different Food Group.
+A set (or "meld") consists of three (3) cards and can be formed in two ways:
+Three identical Ingredient cards (e.g., 3 "Apple" cards).
+One of each of the three different Ingredient cards belonging to a single Food Group (e.g., one "Apple," one "Avocado," and one "Strawberry" from the "Orchard Selection" Food Group).
+
+II. Terminology:
+Food Group: The eight broad categories of ingredients (e.g., Orchard Selection).
+Ingredient: The specific items within a Food Group (e.g., Apple, Avocado, Strawberry).
+
+III. Deck Composition (Total cards will be 113 - 96 Ingredient Cards + 8 Action Cards + 1 Wild Card + 8 Recipe Cards):
+Ingredient Cards (96 cards total):
+   There are 8 Food Groups.
+   Each Food Group has 3 unique Ingredients. (Total of 24 unique Ingredient types).
+   There are 4 copies of each unique Ingredient card.
+Action Cards: A set of special cards mixed into the deck that have immediate effects when drawn.
+   Total: 8 Action Cards (2 of each of the 4 types above).
+   Drawing: Resolved immediately when drawn from the main deck.
+   Discarding: The played Action Card goes to the top of the active player's personal discard pile.
+Wild Card (1 card total):
+   One "Universal Spice" / "Secret Ingredient" card. Acts as any Ingredient card from any Food Group.
+
+IV. Food Groups & Their Ingredients:
+Orchard Selection: Apple, Avocado, Strawberry
+Garden Harvest: Tomato, Lettuce, Carrot
+Golden Grains: Rice, Pasta, Bread
+Dairy Delights: Milk, Cheese, Butter
+Pasture & Pen: Chicken, Beef, Bacon
+Coastal Catch: Salmon, Shrimp, Octopus
+Earthy Finds: Potato, Mushroom, Ginger
+Spice Rack: Garlic, Onion, Black Pepper
+
+V. Game Setup (Per Round):
+Shuffle all Ingredient, Action, and Wild cards together to form the main draw deck.
+Deal 8 cards to each player.
+Place the remaining deck face-down in the center to form the draw pile.
+Randomly determine and announce the "Open Kitchen" special Food Group for the current round.
+
+VI. Player Turn:
+Draw Phase: The player must choose one of the following:
+Draw the top card from the face-down draw pile.
+Draw the top face-up card from any player's personal discard pile (including their own).
+Action Phase (If Applicable):
+If an Action Card was drawn from the draw pile, its effect is resolved immediately (unless the card states otherwise).
+Meld Phase (Optional):
+During their turn (typically after drawing and resolving any action), if the player can form a complete set (as defined in Core Objective) with the cards in their hand, they may choose to meld it.
+To meld, the player lays the 3 cards forming the set face-up in front of them. These melded cards are considered locked and cannot be returned to the hand.
+Win Condition Check:
+If, after melding, a player has successfully melded their third set (and all three melds are from different Food Groups), they immediately declare victory for the round. The round ends.
+Discard Phase (If Not Winning):
+The player must discard one card from their hand face-up onto their own personal discard pile.
+Important Discard Rule: Any card(s) already in that player's discard pile that are now covered by this newly discarded card become inaccessible to all players for the remainder of the round (unless the main draw pile is depleted and discard piles are reshuffled). Only the top card of each personal discard pile is ever available to be picked up.
+
+VII. Agreed-Upon Action Card Concepts (Specifics TBD):
+   1. Action Card: "Expiration Date" (2 copies in deck)
+   * Text: "Choose an opponent. That player must discard 1 card from their hand (their choice) onto their personal discard pile. Then, if their discard pile is not empty, they must take the top card from their own discard pile into their hand. If their discard pile was empty at that moment, they draw 1 card from the main deck instead."
+   * Effect: Disrupts an opponent's hand and forces them to potentially take back an unwanted card or a less optimal one.
+   2. Action Card: "Fresh Delivery!" (2 copies in deck)
+   * Text: "Draw the top 2 cards from the main deck. Add 1 of these cards to your hand. Place the other card face-down on the bottom of the main deck."
+   * Effect: Gives the player a better choice of card and some minor control over what's removed from immediate play.
+   3. Action Card: "Salvage Operation" (2 copies in deck)
+   * Text: "Choose any player's discard pile that currently has at least two cards in it. Take the second card from the top (the card directly underneath the visible top card) and add it to your hand. (The top card of that discard pile remains untouched)."
+   * Effect: Allows strategic retrieval of a recently "buried" card, adding a clever way to interact with the discard piles. (Remember: after playing this and taking the card, your hand size increases by one. You will still make your normal end-of-turn discard from your now larger hand).
+   4. Action Card: "Potluck!" (2 copies in deck)
+   * Text: "Each player (including you) chooses 1 card from their hand and passes it face-down to the player on their left. Add the card you receive to your hand."
+   * Effect: A light, all-player interaction that shakes up hands. Could be helpful or slightly disruptive depending on what you pass and receive.
+
+VIII. End of Round & Scoring:
+When a player wins the round (by melding their third valid set):
+The winning player receives +3 points (Win Bonus).
+All players (including the winner) then score points for all sets they have successfully melded in front of them:
++3 points for each set of "three identical Ingredient cards."
++1 point for each set of "three different Ingredient cards from one Food Group."
+"Open Kitchen" Bonus: Any player (including the winner) who has a melded set belonging to the round's pre-determined "Open Kitchen" special Food Group receives an additional +1 point. (Maximum of +1 point from this bonus per player, per round).
+
+IX. Draw Pile Depletion:
+If the main draw pile runs out of cards before a player wins the round, all personal discard piles are collected, shuffled thoroughly, and formed into a new face-down draw pile. Play continues.
+
+X. Overall Game End:
+The game is played over a pre-determined number of rounds (e.g., "4, 5, or 6-course meal").
+The player with the highest cumulative score after all rounds are completed is the overall winner of the game.
+
+XI. Open Kitchen Bonus Selection Process :
+
+Dealer & Picker: The dealer rotates each round. The player to the dealer's right is the "Picker."
+Timing: After player hands are dealt and the main draw pile is set.
+Picker's Action: The Picker draws the top card from the main draw pile and reveals it to all players.
+Resolution based on card type:
+If an Ingredient Card is drawn:
+The Food Group of this Ingredient Card becomes the "Open Kitchen" special Food Group for the round.
+The revealed Ingredient Card is then given to the dealer, who inserts it face-down into the approximate middle of the draw deck. The deck may then be cut once by another player.
+If an Action Card is drawn:
+There is no "Open Kitchen" special Food Group for this round.
+The revealed Action Card is given to the dealer, who inserts it face-down into the approximate middle of the draw deck. The deck may then be cut once by another player.
+If the Wild Card ("Universal Spice") is drawn:
+The Picker immediately adds the Wild Card to their hand.
+The Dealer then takes one card at random from the Picker's hand.
+This randomly chosen card is given back to the dealer, who inserts it face-down into the approximate middle of the draw deck. The deck may then be cut once by another player.
+There is no "Open Kitchen" special Food Group for this round.
+
+XII. Optional Advanced Modules:
+
+Chef's Special Module - Finalized Core Concept:
+Setup: At the start of each round, one "Recipe Card" is drawn from a dedicated Recipe Deck and displayed. This is the active Chef's Special for the round.
+Recipe Card Content:
+   Unique Recipe Name (e.g., "Seafood Paella," "Mushroom Risotto," "Berry Cobbler").
+   A list of 8 specific, unique Ingredient cards required. These ingredients should be diverse, ideally spanning multiple Food Groups.
+A point value for completion: 12 points.
+Player Goal (for this module): To be the first to collect all 8 specified Ingredient cards in their hand.
+Winning the Round with a Recipe:
+   On a player's turn, if the card they draw (from the main deck or a discard pile) is the 8th and final unique Ingredient needed to complete the active Chef's Special Recipe, and they now hold all 8 required ingredients:
+   They declare "Chef's Special!"
+   They reveal the 8 Ingredient cards from their hand that match the recipe.
+   This player wins the round. They do not make a final discard.
+Scoring for Recipe Win:
+   The player who completes the Chef's Special scores a flat 12 points for that round.
+   This 12-point score is inclusive (it replaces the standard +3 win bonus, and they do not score extra for any "Open Kitchen" Food Group synergy within the recipe ingredients, nor do they score the recipe ingredients as if they were standard sets).
+Interaction with Standard Play:
+   Players are free to switch their strategy between pursuing the Chef's Special Recipe or collecting 3 standard sets during the round.
+   If a player wins the round by melding 3 standard sets, any other players who were attempting the Chef's Special Recipe score 0 points for their incomplete recipe. However, these players do still score points for any standard sets they had successfully melded on the table prior to the round ending.
+   No Partial Melding of Recipe Ingredients: All 8 ingredients for a recipe must be collected in hand and revealed simultaneously to win with the recipe.
+
+Summary of Potentially Revised Recipes (Aiming for max 1 full set per recipe):
+"Classic Breakfast Platter": Bacon, Chicken, Bread, Butter, Tomato, Strawberry, Cheese, Mushroom. (0 full Food Group sets)
+"Seafood Paella": Rice, Shrimp, Octopus, Tomato, Onion, Garlic, Avocado, Salmon. (1 full Food Group set: Coastal Catch)
+"Avocado & Chicken Salad Sandwich": Avocado, Chicken, Lettuce, Tomato, Bread, Onion, Black Pepper, Cheese. (0 full Food Group sets)
+"Hearty Beef & Mushroom Pasta": Beef, Mushroom, Pasta, Tomato, Onion, Garlic, Cheese, Black Pepper. (1 full Food Group set: Spice Rack)
+"Spicy Ginger Salmon with Rice": Salmon, Ginger, Garlic, Rice, Onion, Carrot, Avocado, Black Pepper. (1 full Food Group set: Spice Rack)
+"Orchard Chicken Salad": Chicken, Apple, Strawberry, Lettuce, Avocado, Onion, Black Pepper, Bread. (1 full Food Group set: Orchard Selection)
+"Loaded Baked Potato": Potato, Cheese, Bacon, Butter, Tomato, Onion, Mushroom, Garlic. (0 full Food Group sets)
+"Rustic Tomato & Bread Soup": Tomato, Bread, Garlic, Onion, Butter, Cheese, Mushroom, Carrot. (0 full Food Group sets)
+
+
+Key Visual Decisions So Far:
+
+Overall Style: Rustic/Farmhouse, organic cooking vibe.
+Ingredient Cards:
+Background: Light neutral (peach/tan/sand).
+Illustration: Watercolor/warm photo of ingredient (no text name).
+Food Group ID: Colored frame, group name at bottom, small group icon in upper corners.
+Food Group Colors & Icons:
+  Orchard Selection: Leaf Green (Apple/Berry icon)
+  Garden Harvest: Earthy Orange (Carrot/Leaf icon)
+  Golden Grains: Warm Yellow/Gold (Wheat/Bread icon)
+  Dairy Delights: Pastel Blue (Milk/Cheese icon)
+  Pasture & Pen: Rich Brown (Chicken/Barn icon)
+  Coastal Catch: Ocean Blue/Teal (Fish/Anchor icon)
+  Earthy Finds: Deep Purple (Mushroom/Potato icon)
+  Spice Rack: Warm Red/Terracotta Red (Spice Jar/Mortar & Pestle icon)
+Action Cards:
+  Background: Out-of-focus light plaid pattern in Cream & Pink.
+  No frame.
+  Prominent Banner for Name, Box for Instructions.
+  Small Fire/Flame icon.
+Wild Card ("Universal Spice"):
+  Background: Golden, subtly patterned.
+  Image: Rustic seasoning bottle/mixed spices.
+  Text: Single line identifying it.
+Recipe Cards:
+  Same size as main deck. Rustic/Farmhouse style.
+  Image of finished dish at top, Recipe Name.
+  Ingredients list with colored Food Group icons as bullets, then Ingredient text name.
+"12 POINTS" displayed.
+Score Tracking: Pen & paper.
+Box Art: Organic cooking vibe, orchard/harvest imagery.
+Rulebook: Folded card-size pamphlet.
+
+
+Proposed Rulebook Pamphlet Structure:
+Panel 1: Front Cover
+Game Title (e.g., "Iron Chef Rummy" or your chosen title)
+Catchy Tagline (e.g., "The Tastiest Set Collection Game!")
+Game Box Art Element / Key Visual (e.g., the orchard/harvest imagery)
+Player Count (e.g., 2-6 Players)
+Playing Time (e.g., 15-20 min per round / 45-60 min for a 3-round game)
+Age Range (e.g., 8+)
+Panel 2: Game Overview & Objective
+"Welcome, Chefs!" (Brief thematic intro - 1-2 sentences)
+Game Goal (Overall): "Be the player with the most points after [X] rounds (Courses) by collecting sets of delicious Ingredients!"
+Goal of a Round: "In each round, be the first to meld (lay down) three complete sets of Ingredients, each from a different Food Group."
+Quick Look at a "Set": Briefly explain the two ways to make a set (3 identical Ingredients OR 3 different Ingredients from one Food Group). Maybe a tiny visual example.
+Panel 3: What's in the Kitchen? (Components)
+List of components with quantities:
+105 Main Deck Cards (96 Ingredient, 8 Action, 1 Wild Card)
+(If Chef's Special Module is included by default, list Recipe Cards here. If it's "advanced," mention it as an optional way to play later).
+Briefly describe Ingredient, Action, and Wild cards here.
+Visual Key for Food Groups (VERY IMPORTANT for this panel):
+Show each of the 8 Food Group Icons alongside its Color and Name. This is a critical reference.
+Example: (Leaf Green Apple Icon) Orchard Selection
+Panel 4: Setting Up the Kitchen (Round Setup)
+Choose Number of Rounds (Courses).
+Shuffle & Deal: Shuffle Main Deck. Deal 8 cards to each player. Place rest as Draw Pile.
+Determine "Open Kitchen" Bonus:
+Explain the "Picker" (player to Dealer's right) draws top card.
+If Ingredient Card: Its Food Group is the bonus. Card returned to middle of deck.
+If Action/Wild Card: No bonus. Card returned to middle of deck (Wild Card exchange explained).
+Remind players to remember the bonus Food Group (or lack thereof).
+(If using Chef's Special Module): Reveal one Recipe Card for the round.
+Panel 5: Let's Get Cooking! (Player's Turn)
+Turn Order: Clockwise, starting with player to Dealer's left.
+On Your Turn (summarized steps):
+DRAW: Take 1 card:
+From top of Draw Pile OR
+From top of any player's Discard Pile (explain these are personal, face-up piles).
+ACTION (If Drawn): If you drew an Action Card from the Draw Pile, resolve it immediately. (Briefly mention it's then discarded to your pile).
+MELD (Optional): You may lay down (meld) any complete sets from your hand face-up in front of you.
+Crucially explain: Melded cards are removed from your active hand. Your active hand size shrinks.
+WIN? (Check Condition): If you just melded your 3rd valid set (each from a different Food Group), you win the round! The round ends. (See "End of the Round").
+DISCARD (If Not Winning): Discard 1 card from your active hand face-up onto your own Discard Pile.
+Explain "Buried Card" Rule: Cards underneath your new discard are now inaccessible.
+Panel 6: Special Cards & End of the Round
+Wild Card ("Universal Spice"): Explain its use.
+Action Card Quick Reference (Optional, if space): List the 4 Action Card names with a 1-sentence summary of each. Otherwise, players just read the card text.
+End of the Round (When a Player Wins):
+Winning player declares win.
+Scoring:
+Winner: +3 points.
+All Players (including winner): Score points for their melded sets:
++3 points per "3 identical Ingredients" set.
++1 point per "3 different Ingredients of a type" set.
+"Open Kitchen" Bonus: +1 point for any player with a melded set from the bonus Food Group.
+Draw Pile Runs Out: Explain reshuffling all discard piles.
+Panel 7 (Optional - if space allows or for back of pamphlet): Chef's Special Module (Advanced Play)
+Briefly explain this as an alternative way to win a round.
+Objective: Collect the 8 specific Ingredients shown on the revealed Recipe Card.
+Winning: Announce "Chef's Special!" when you draw the 8th ingredient and can show all 8.
+Scoring: Worth 12 points (instead of standard win/set points for that player).
+If this module is considered core, integrate its setup and win condition into Panels 4 & 5.
+Panel 8: Back Cover / End of Game
+End of the Game: After the agreed number of rounds (Courses), player with the most total points is the Grand Chef / Winner!
+Quick Credits / Thank You.
+(Optional) Small image or game logo.
+
+
+
+🧪 Game Mode B: Potion Crafting
+
+In this mode, players are no longer building sets just for the sake of scoring — they are crafting magical potions with specific powers. The goal of the mode is to complete one potion from each of the three categories:
+
+💘 Love Potions
+
+💰 Fortune Spells
+
+☠️ Hexes
+
+The first player to complete one of each wins the game.
+
+🎯 Core Gameplay
+
+Each potion recipe requires a specific set of 3 unique ingredients.
+
+Players choose any one potion to craft at a time, but cannot repeat categories.
+
+To claim a potion, a player must lay down the exact 3 ingredients in one turn.
+
+Upon doing so, the player receives a category marker and gains a perk for the next round (see below).
+
+Optional: After a potion is crafted, the recipe card can be flipped/retired so other players cannot use it, or you can allow multiple players to complete the same potion.
+
+🧹 Potion Recipes & Effects
+
+Here are some thematic, balanced potion recipes using your selected 45 ingredients. Each is paired with a perk effect that influences gameplay in the next round (or next few turns).
+
+💘 Love Potions
+Name	Ingredients	Perk Gained
+Elixir of Longing	Siren’s Tear, Lavender, Unicorn Hair	See one random card in any player’s hand once per round.
+Blushbloom Brew	Spider Silk, Snowdrop Petal, Elven Dew	You draw an extra card at the start of next round.
+Heartstring Infusion	Hair of a Virgin, Clear Quartz, Amethyst	Prevent one attack or negative action against you next round.
+💰 Fortune Spells
+Name	Ingredients	Perk Gained
+Fate Twister	Dragon Blood Resin, Moonstone Powder, Four Leaf Clover	Draw two cards instead of one at the start of your first turn.
+Whispering Gold	Basilisk Fang, Fairy Dust, Dried Kraken Ink	Keep one extra card in hand without limit next round.
+Greedroot Tonic	Goblin Earwax, Whispering Bark, Bone Dust	After drawing a card, peek at the top 2 of the deck and pick one.
+☠️ Hexes
+Name	Ingredients	Perk Gained
+Venom Veil	Nightshade, Troll Fat, Manticore Venom	Target one player: they discard a random card from hand at the start of next round.
+Spirit Lock	Coffin Nails, Necrotic Ash, Raven Feather	Block one player from crafting a potion on their next round.
+Ashcurse Draught	Ashes of a Burnt Letter, Graveyard Dirt, Obsidian Shard	Force one player to skip their draw phase once next round.
+🔄 Optional Rule Variants
+
+Potion Steal Mechanic:
+If a player has 2 out of 3 ingredients of a recipe another player has already completed, they can attempt to “steal” it by revealing the 2 and drawing a card — if it's the third matching ingredient, they claim the potion.
+
+Perk Duration Rules:
+All perks are one-use unless otherwise stated, and expire at the end of the next round.
+
+🎲 Balance Considerations
+
+With ~45 ingredients, each potion is balanced to use both rare fantasy items and common herbal/mystic elements.
+
+Players may compete for overlapping ingredients, promoting resource tension and strategic discards.
+
+Perks are light-touch modifiers, avoiding runaway leads but providing meaningful tactical shifts.
+
+The 3-category win condition ensures variety and replayability.
+
+
+🩸 Potion Theft Event — “Thief’s Gamble”
+
+“In the witching hour, all magic is vulnerable…”
+
+⚙️ Trigger
+
+There is a unique event card in the main deck: 🕯 Thief’s Gamble.
+
+When drawn, the player must play it immediately.
+
+🎯 Targeting
+
+The player who drew the card becomes the Thief.
+
+The Thief chooses any other player who currently holds at least one completed potion.
+
+🃏 The Gamble
+
+The Thief selects 3 ingredient cards from their hand and reveals them.
+
+The targeted player must privately check their hand and reveal how many of the selected 3 they also hold:
+
+If 2 or more match:
+→ The Thief steals one of the opponent’s completed potions (Thief chooses which one).
+→ The stolen token is transferred immediately.
+
+If fewer than 2 match:
+→ The attempt fails.
+→ The Thief must discard the 3 revealed cards, then draw 3 new ones from the deck.
+
+🧠 Strategy & Notes
+
+Memory matters: attentive players may track likely cards in opponents' hands.
+
+The targeted player does not lose their ingredient cards—only the potion, if the attempt succeeds.
+
+Potions stolen this way count toward victory just like regular ones.
+
+This card is removed from the game after use.
+
+
+🧠 Core Mechanic Proposal Summary
+
+You are proposing three primary actions per turn:
+
+Action	Requirements	Effect	Recovery Penalty
+Attack (Hex)	At least 2 “Hex” type cards	Win 1 point. Defender discards difference in card count.	If blocked, attacker loses all used cards and draws 1 per turn.
+Defend (Love)	At least 3 “Love” type cards	Become untargetable for (n–1) turns.	Lose all used cards, draw 1 per turn.
+Fortune (Fate)	At least 3 “Fate” type cards	Look at top 2 cards and pick one for (n–1) turns.	Lose all used cards, draw 1 per turn.
+
+✅ Great Ideas Already Baked In:
+
+Predictive play (Yomi-style): attacker must guess whether defender will defend.
+
+Risk-reward balance (Risk-style): failed attacks result in a serious rebuild.
+
+Resource attrition: hand becomes an economy; cards feel valuable.
+
+🧪 Suggestions to Improve Playability & Fun
+1. Asymmetry in Requirements & Outcomes
+
+Right now, Attack has the lowest card requirement (2 cards), but potentially the biggest swing (score + card denial). This risks over-favoring aggression. Here's a revised suggestion:
+
+Action	Min Cards	Description	Recovery Penalty
+Attack (Hex)	3 cards	Target a player. If they can't block with 3 matching "Love" cards, you score 1 pt. They discard difference.	Lose all used cards if blocked. Draw 1 card per turn until full.
+Defend (Love)	2 cards	Become immune to attacks for (n–1) turns.	Lose all used cards. Draw 1/turn.
+Fortune (Fate)	3 cards	Scry 2 cards and pick 1 during each draw for (n–1) turns.	Same recovery.
+
+This makes Attack a higher investment, encouraging smarter aggression rather than spammed attacks.
+
+2. Card Typing Integration Across All Modes
+
+To ensure synergy across game modes (A, B, and C), we assign types to ingredients:
+
+Ingredient	Type	Notes
+Toadstool, Grave Dust	Hex	Used for offensive spells
+Crystal Tear, Moon Dew	Love	Used for defense, healing
+Fox Tail, Bone Charm	Fate	Used for manipulation
+
+This keeps cards reusable across modes but allows their tactical use to change depending on mode.
+
+3. Add a “Bluff” Element
+
+Players may declare an action, but others don’t see the cards until resolution.
+
+Example: A player declares Attack, places 3 cards face down. Target must decide whether to block by spending 3 Love cards.
+
+If attacker was bluffing or failed to play correct cards → attacker loses bluff cards.
+
+This keeps things tense and exciting.
+
+4. Combo Potions (Optional Layer)
+
+Once a player earns a point (successful attack), allow them to spend a full turn using 3 cards (one of each type) to brew a Combo Potion that grants a 1-time bonus effect:
+
+Revive: draw up to 5 cards immediately
+
+Hex Seal: block next attack passively
+
+Mirror Veil: reflect next failed attack to attacker
+
+Gives late-game strategy and comeback mechanics.
+
+🪄 Example Turn Flow
+
+Player declares action: Attack
+
+Targets another player
+
+Plays 3 face-down “Hex” cards
+
+Target chooses to Defend (must play 3 “Love” cards)
+
+Reveal cards:
+
+If attacker used correct type & defender failed → attacker scores 1, defender discards difference
+
+If defender succeeds → attacker discards all 3 and rebuilds 1 per turn
+
+🎯 Final Recommendations
+
+Balance action costs: Defend might require fewer cards than Attack.
+
+Tune “n–1” turns: a cap of 2 turns of invulnerability/scrying is probably enough.
+
+Add limited-use wild cards or reaction spells to increase tension mid-fight.
+
+Maintain a spirit point goal (e.g., 5 points) to win the round.

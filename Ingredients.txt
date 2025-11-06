@@ -1,0 +1,33 @@
+NAME	DESCRIPTION	CATEGORY	BATTLE ICON
+Coffin Nails	Iron spikes reclaimed from old graves. Seal endings, bind spirits.	Occult Rituals	🕷 Hex
+Hair of a Virgin	Channel innocence; amplifies purity in transformation spells.	Body & Transformation	💖 Love
+Ashes of a Burnt Letter	Erase the past; release secrets or forgotten promises.	Occult Rituals	💖 Love
+Nightshade	Deadly charm; poisons or induces dreamlike trances.	Sacred Herbs & Botanicals	🕷 Hex
+Yew Tree Branch	Sacred smoke used in purification rituals. Symbol of death and rebirth.	Sacred Herbs & Botanicals	🔮 Fortune
+Whispering Bark	Holds forest voices; used to commune with nature’s will.	Sacred Herbs & Botanicals	💖 Love
+White Sage	Purifies spaces; banishes dark energy and spirits.	Purification & Blessing	💖 Love
+Four Leaf Clover	A rare find, universally known as a sign of great luck.	Purification & Blessing	🔮 Fortune
+Frankincense	Sacred incense that opens gateways to divine insight	Purification & Blessing	🕷 Hex
+Basilisk Fang	Powerful venom that petrifies foes; essence of deadly precision.	Out	
+Unicorn Hair	Heals wounds; embodies truth and untamed grace.	Mythical Beasts	💖 Love
+Manticore Venom	Inflicts pain and fear; fuel for dark enchantments.	Mythical Beasts	🕷 Hex
+Graveyard Dirt	Draws death’s essence; anchors binding or curse magic.	Death & the Beyond	🕷 Hex
+Ghoul Tongue	Mimics voices; commands the restless dead.	Death & the Beyond	💖 Love
+Raven Feather	Omen of fate; carries messages between worlds.	Death & the Beyond	🔮 Fortune
+Moonstone Powder	Enhances intuition; stabilizes lunar-based spells.	Celestial & Dream Magic	🔮 Fortune
+Starflower	Radiates calm; focuses celestial energy for clarity.	Celestial & Dream Magic	💖 Love
+Lightning Bug Glow	Stores spark energy; used to ignite volatile mixtures.	Celestial & Dream Magic	🕷 Hex
+Spider Silk	Weaves protection; binds magic in intricate wards.	Body & Transformation	🕷 Hex
+Mermaid Scale	Calls tides; aids charm or illusion spells.	Body & Transformation	🔮 Fortune
+Eye of Newt 	Classic catalyst; boosts reaction potency in brews.	Occult Rituals	🔮 Fortune
+Clear Quartz	Amplifies energy; cleanses negative vibrations.	Crystals & Earthbound Magic	🔮 Fortune
+Amethyst	Used to enhance intuition, calm turbulent thoughts, and protect the mind during astral projection.	Crystals & Earthbound Magic	💖 Love
+Crushed Pearl	Restores vitality; used in beauty and renewal charms.	Crystals & Earthbound Magic	🕷 Hex
+Pumpkin Guts	Symbol of harvest; grounds chaotic energies.	Witch’s Pantry	💖 Love
+Ghost Pepper Essence 	Adds fiery will; ignites raw passion or fury.	Witch’s Pantry	🕷 Hex
+Bat Wing 	Grants perception in darkness; aids stealth spells.	Witch’s Pantry	🔮 Fortune
+Fairy Dust 	Enhances levitation and whimsy; defies mundane laws.	Mythical Beasts	🔮 Fortune
+			
+			
+Mercury	Liquid metal of change; bridges realms, speeds transformation magic.	Wild Card	
+Solomons Seal	Root of wisdom; seals pacts, strengthens truth and healing charms.	Wild Card	

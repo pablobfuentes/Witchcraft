@@ -1,0 +1,67 @@
+I. Core Objective (Per Round):
+Be the first player to form and meld three (3) complete sets.
+Each of these three sets must be from a different Source category.
+A set (or "meld") consists of three (3) cards and can be formed in two ways:
+Three identical Ingredient cards (e.g., 3 "White Sage" cards).
+One of each of the three different Ingredient cards belonging to a single Source (e.g., one "Nightshade," one "Yew Tree Branch," and one "Whispering Bark" from the "Sacred Herbs & Botanicals" Source).
+
+II. Terminology:
+Source: The nine broad categories of ingredients (e.g., Occult Rituals).
+Ingredient: The specific items within a Source (e.g., Spider Silk, Mermaid Scale, Hair of a Virgin).
+
+III. Deck Composition (Total cards will be 140- 108 Ingredient Cards + 16 Spell Cards + 1 Wild Card + 15 Potion Cards):
+Ingredient Cards (108 cards total):
+   There are 9 Sources.
+   Each Source has 3 unique Ingredients. (Total of 27 unique Ingredient types).
+   There are 4 copies of each unique Ingredient card.
+Action Cards: A set of special cards mixed into the deck that have immediate effects when drawn.
+   Total: 16 Spell Cards (2 of each of the 8 types).
+   Drawing: Resolved immediately when drawn from the main deck.
+   Discarding: The played Action Card goes to the top of the active player's personal discard pile.
+Wild Card (1 card total):
+   One "Secret Ingredient" card. Acts as any Ingredient card from any Source.
+
+V. Game Setup (Per Round):
+Shuffle all Ingredient, Spell, and Wild cards together to form the main draw deck.
+Deal 8 cards to each player.
+Place the remaining deck face-down in the center to form the draw pile.
+
+VI. Player Turn:
+Draw Phase: The player must choose one of the following:
+Draw the top card from the face-down draw pile.
+Draw the top face-up card from any player's personal discard pile (including their own).
+Action Phase (If Applicable):
+If an Action Card was drawn from the draw pile, its effect is resolved immediately (unless the card states otherwise).
+Meld Phase (Optional):
+During their turn (typically after drawing and resolving any action), if the player can form a complete set (as defined in Core Objective) with the cards in their hand, they may choose to meld it.
+To meld, the player lays the 3 cards forming the set face-up in front of them. These melded cards are considered locked and cannot be returned to the hand.
+Win Condition Check:
+If, after melding, a player has successfully melded their third set (and all three melds are from different Sources), they immediately declare victory for the round. The round ends.
+Discard Phase (If Not Winning):
+The player must discard one card from their hand face-up onto their own personal discard pile.
+Important Discard Rule: Any card(s) already in that player's discard pile that are now covered by this newly discarded card become inaccessible to all players for the remainder of the round (unless the main draw pile is depleted and discard piles are reshuffled). Only the top card of each personal discard pile is ever available to be picked up.
+
+VII. Agreed-Upon Action Card Concepts (Specifics TBD):
+Card Name	Effect Summary
+🕯 Circle Breaker	Skip the next player's turn
+🔁 Twist of Fate	Reverse direction of play
+🐍 Venom Brew	Target player discards 1 random card
+🔮 Astral Projection	Peek top 3 cards of draw pile, keep 1, reorder rest
+🧃 Foul Elixir	Drawer discards 2 random cards
+ Crackling Cauldron	Draw 2 extra cards, then discard 2 (after melds)
+🕸 Hex Seal	Block a category of your choice for all players for 1 round
+Thief's Gamble	pick a card from opponents hand to keep, discard 1 of our choosing
+
+VIII. End of Round & Scoring:
+When a player wins the round (by melding their third valid set):
+The winning player receives +3 points (Win Bonus).
+All players (including the winner) then score points for all sets they have successfully melded in front of them:
++3 points for each set of "three identical Ingredient cards."
++1 point for each set of "three different Ingredient cards from one Food Group."
+
+IX. Draw Pile Depletion:
+If the main draw pile runs out of cards before a player wins the round, all personal discard piles are collected, shuffled thoroughly, and formed into a new face-down draw pile. Play continues.
+
+X. Overall Game End:
+The game is played over a pre-determined number of rounds (e.g., "4, 5, or 6").
+The player with the highest cumulative score after all rounds are completed is the overall winner of the game.
