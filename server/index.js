@@ -119,7 +119,7 @@ const game = {
 };
 
 function dealInitial() {
-  const HAND = 8;
+  const HAND = 9;
   for (let i = 0; i < HAND; i++) {
     for (const p of game.players) {
       const c = game.deck.pop(); if (c) p.hand.push(c);
@@ -203,7 +203,7 @@ io.on('connection', (socket) => {
     me.discard.push(c);
     // end turn if at or under cap
     const total = me.hand.length + me.melds.reduce((s,m)=>s+m.length,0);
-    const cap = 8 + (me.tempHandBonus || 0);
+    const cap = 9 + (me.tempHandBonus || 0);
     if (total <= cap) {
       game.activePlayer = (game.activePlayer + 1) % game.players.length;
       game.turnPhase = 'draw';
@@ -216,7 +216,7 @@ io.on('connection', (socket) => {
     if (!game.started || idx !== game.activePlayer || game.turnPhase !== 'discard') return;
     const me = game.players[idx];
     const total = me.hand.length + me.melds.reduce((s,m)=>s+m.length,0);
-    const cap = 8 + (me.tempHandBonus || 0);
+    const cap = 9 + (me.tempHandBonus || 0);
     if (total > cap) return; // must meet cap before ending
     game.activePlayer = (game.activePlayer + 1) % game.players.length;
     if (game.skipNextCount > 0) { game.skipNextCount -= 1; game.activePlayer = (game.activePlayer + 1) % game.players.length; }

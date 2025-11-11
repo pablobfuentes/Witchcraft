@@ -57,7 +57,7 @@ const WILD_CARD = { name: "Secret Ingredient", category: "Wild Card" };
 
 const COPIES_PER_INGREDIENT = 4; // 27 * 4 = 108
 const COPIES_PER_ACTION = 3; // default copies for each Action card
-const HAND_SIZE = 8; // per Gameplay 1 Rules
+const HAND_SIZE = 9; // per Gameplay 1 Rules
 
 /**
  * Utility: shuffle array in-place (Fisher-Yates)
@@ -172,6 +172,7 @@ const els = {
   startBtn: document.getElementById("startBtn"),
   onlineBtn: document.getElementById("onlineBtn"),
   playerCount: document.getElementById("playerCount"),
+  playerName: document.getElementById("playerName"),
   deck: document.getElementById("deck"),
   deckCount: document.getElementById("deckCount"),
   players: document.getElementById("players"),
@@ -626,13 +627,20 @@ if (els.onlineBtn) {
         foot.appendChild(btn);
       });
     });
-    socket.on('assigned', ({ id }) => { myId = id; });
+    socket.on('assigned', ({ id }) => { 
+      myId = id;
+      // Send player name if provided
+      const playerName = els.playerName?.value?.trim();
+      if (playerName) {
+        socket.emit('set_name', playerName);
+      }
+    });
     socket.on('room_update', (room) => {
       roomHostId = room.hostId;
       roomStarted = room.started;
       if (els.hostStartBtn) {
         if (onlineMode && myId && myId === roomHostId && !roomStarted) {
-          els.hostStartBtn.style.display = '';
+          els.hostStartBtn.style.display = 'block';
         } else {
           els.hostStartBtn.style.display = 'none';
         }
@@ -832,8 +840,13 @@ function chooseActionPlayOrDiscard(handIndex) {
         if (c?.id) socket.emit('discard', c.id);
         closeOverlay();
       });
+      const cancelBtn = document.createElement("button"); cancelBtn.className = "btn"; cancelBtn.textContent = "Cancel";
+      cancelBtn.addEventListener("click", () => {
+        closeOverlay();
+      });
       row.appendChild(playBtn);
       row.appendChild(discardBtn);
+      row.appendChild(cancelBtn);
     });
     return;
   }
@@ -853,8 +866,13 @@ function chooseActionPlayOrDiscard(handIndex) {
       closeOverlay();
       discardCardFromHand(handIndex);
     });
+    const cancelBtn = document.createElement("button"); cancelBtn.className = "btn"; cancelBtn.textContent = "Cancel";
+    cancelBtn.addEventListener("click", () => {
+      closeOverlay();
+    });
     row.appendChild(playBtn);
     row.appendChild(discardBtn);
+    row.appendChild(cancelBtn);
   });
 }
 
@@ -918,7 +936,7 @@ function handleActionCard(card, opts = { source: "draw" }) {
     case "Crackling Cauldron": {
       openOverlay(container => {
         container.appendChild(cardElement(card, true));
-        const p = document.createElement("p"); p.textContent = "Draw 1 extra card now. Your total (hand + melded) may be 9 until you make a meld; after melding, discard back to total 8."; container.appendChild(p);
+        const p = document.createElement("p"); p.textContent = "Draw 1 extra card now. Your total (hand + melded) may be 10 until you make a meld; after melding, discard back to total 9."; container.appendChild(p);
         const footer = document.createElement("div"); footer.className = "footer"; container.appendChild(footer);
         const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "Resolve";
         btn.addEventListener("click", () => {
@@ -1105,7 +1123,7 @@ function getMeldedCount(player) {
 function getRequiredDiscards() {
   const player = state.players[state.activePlayer];
   const total = player.hand.length + getMeldedCount(player);
-  const cap = 8 + (player.tempHandBonus || 0);
+  const cap = 9 + (player.tempHandBonus || 0);
   const requiredByTotal = Math.max(0, total - cap);
   return Math.max(state.minDiscardsThisTurn, requiredByTotal);
 }
@@ -1113,7 +1131,7 @@ function getRequiredDiscards() {
 function getRemainingDiscards() {
   const player = state.players[state.activePlayer];
   const total = player.hand.length + getMeldedCount(player);
-  const cap = 8 + (player.tempHandBonus || 0);
+  const cap = 9 + (player.tempHandBonus || 0);
   const remainingCap = Math.max(0, total - cap);
   const remainingMin = Math.max(0, state.minDiscardsThisTurn - state.discardsThisTurn);
   return Math.max(remainingCap, remainingMin);
