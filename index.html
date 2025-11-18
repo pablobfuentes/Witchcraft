@@ -11,6 +11,13 @@
       <div class="home-card">
         <h1>Witchcraft</h1>
         <div class="controls">
+          <label for="gameMode">Game Mode</label>
+          <select id="gameMode" aria-label="Game mode">
+            <option value="1" selected>The Apothecary</option>
+            <option value="2">The Alchemist</option>
+          </select>
+        </div>
+        <div class="controls">
           <label for="playerCount">Players</label>
           <select id="playerCount" aria-label="Number of players">
             <option value="1">1</option>
@@ -49,6 +56,10 @@
       <main class="table">
         <section class="center">
           <div id="deck" class="deck" title="Draw pile"></div>
+          <div id="potionsRow" class="potions-row hidden">
+            <h3>Available Potions</h3>
+            <div id="potionsDisplay" class="potions-display"></div>
+          </div>
         </section>
         <section id="players" class="players"></section>
       </main>

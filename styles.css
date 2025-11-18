@@ -12,6 +12,88 @@
 .win-content { position: relative; z-index: 2; display: grid; gap: 10px; place-items: center; padding: 24px; color: #f3f3ff; text-align: center; }
 .win-content h2 { margin: 0; font-size: 28px; }
 .win-content .btn { background: #25d0a5; color: #0b1320; border: 0; padding: 10px 14px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+
+/* Potions Display (Game Mode 2) */
+.potions-row {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(23,23,34,0.5);
+  border-radius: 12px;
+  border: 1px solid #23233a;
+}
+.potions-row h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  text-align: center;
+  color: var(--accent-2);
+}
+.potions-display {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.potion-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.potion-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.potion-ingredients {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text);
+  padding: 8px;
+}
+.ingredient-badge {
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-right: 4px;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+.ingredient-badge.cat-occult { background: rgba(124, 92, 255, 0.25); color: #cfc9ff; border-color: #7c5cff; }
+.ingredient-badge.cat-body { background: rgba(240, 95, 163, 0.25); color: #ffd1e5; border-color: #f05fa3; }
+.ingredient-badge.cat-herbs { background: rgba(37, 208, 165, 0.25); color: #c9fff2; border-color: #25d0a5; }
+.ingredient-badge.cat-purification { background: rgba(43, 200, 211, 0.25); color: #c9faff; border-color: #2bc8d3; }
+.ingredient-badge.cat-mythical { background: rgba(246, 180, 76, 0.25); color: #ffe9c4; border-color: #f6b44c; }
+.ingredient-badge.cat-death { background: rgba(227, 91, 111, 0.25); color: #ffd3da; border-color: #e35b6f; }
+.ingredient-badge.cat-celestial { background: rgba(76, 182, 246, 0.25); color: #d2efff; border-color: #4cb6f6; }
+.ingredient-badge.cat-crystals { background: rgba(56, 211, 197, 0.25); color: #d3fffa; border-color: #38d3c5; }
+.ingredient-badge.cat-pantry { background: rgba(240, 127, 76, 0.25); color: #ffe0cf; border-color: #f07f4c; }
+.card.potion {
+  background: linear-gradient(135deg, #2a2a44 0%, #1f1f36 100%);
+  border: 2px solid var(--accent);
+  min-height: 260px;
+  width: 180px;
+}
+.potion-effect {
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--accent-2);
+  padding: 8px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(124, 92, 255, 0.3);
+}
+.card.spent {
+  opacity: 0.5;
+  filter: grayscale(0.7);
+}
+
+/* Potion category colors */
+.cat-maleficia { background: linear-gradient(135deg, #8b1538, #5a0f28); color: #ffccd8; }
+.cat-benedicta { background: linear-gradient(135deg, #2a7d58, #1a5038); color: #d0ffd8; }
+.cat-fortuna { background: linear-gradient(135deg, #7c5cff, #5a3ff0); color: #e8d8ff; }
 :root {
   --bg: #0f0f14;
   --panel: #171722;
@@ -255,12 +337,12 @@ select {
 /* Overlay / modal for action choices */
 .overlay { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,20,0.55); z-index: 1000; }
 .overlay:not(.hidden) { display: grid; }
-.modal { background: linear-gradient(180deg, var(--panel), var(--panel-2)); border: 1px solid #23233a; border-radius: 12px; padding: 16px; width: 92%; max-width: 560px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.modal { background: linear-gradient(180deg, var(--panel), var(--panel-2)); border: 1px solid #23233a; border-radius: 12px; padding: 16px; width: 92%; max-width: 560px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); text-align: center; }
 .modal h3 { margin: 0 0 8px; font-size: 18px; }
 .modal p { margin: 6px 0 12px; color: var(--muted); }
-.modal .choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.modal .choices { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .modal .choices .btn { background: var(--panel-2); color: var(--text); border: 1px solid #2b2b44; border-radius: 8px; padding: 8px 10px; cursor: pointer; }
 .modal .choices .btn:hover { filter: brightness(1.08); }
-.modal .cards { display: flex; gap: 8px; flex-wrap: wrap; }
-.modal .footer { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+.modal .cards { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.modal .footer { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
 

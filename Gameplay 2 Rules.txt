@@ -1,0 +1,194 @@
+🧪 Potioncraft — Game Mode 2 (Draft Rules)
+1) Components
+
+Main Deck (136 cards):
+108 Ingredient cards • 27 Spell (Action) cards • 1 Wild card (effect TBD)
+
+Potion Decks (15 cards total):
+3 separate decks by category — Maleficia, Benedicta, Fortuna (5 cards each)
+
+Player Areas: Hand, Crafting Table (your tableau), Personal Discard Pile
+
+Reveals Row: exactly 3 face-up potions, one from each category
+
+2) Goal
+
+Be the first player to claim 1 potion from each category (Maleficia, Benedicta, Fortuna) — total 3 potions — to win the round.
+
+3) Setup
+
+Shuffle the Main Deck. Deal 9 cards to each player.
+
+Create three Potion Decks (by category). Reveal 1 potion from each deck face-up to the center.
+
+Choose starting player; turns proceed clockwise (unless reversed).
+
+4) Turn Structure
+
+On your turn, complete these steps in order:
+
+Draw
+
+Draw 1 card from the Main Deck or the top card of any player’s personal discard pile.
+
+Exception: you can’t normally draw Spell cards from discard piles (unless an effect explicitly lets you).
+
+Play & Craft (any order, repeat as you wish)
+
+Play any number of Spell cards (Action cards).
+
+Timing: Only on your turn. Once played, they cannot be blocked.
+
+Craft potions (see §5). You may craft multiple in the same turn if able.
+
+Use potion perks: Not on the same turn you claimed them. Perks can be used starting your next turn (see §6).
+
+End Step — Discard down to 9 in your Crafting Table
+
+Your Crafting Table Count = cards in your hand + (3 per potion you have, face-up or face-down).
+
+If the total > 9, discard to your own discard pile until the total equals 9.
+
+If you lost a potion earlier and are below 9, you may skip discarding until your table naturally returns to 9.
+
+Direction & Skips: Some Spells alter turn order (e.g., Reverse) or Skip the next player; apply immediately.
+
+5) Crafting Potions
+
+Each revealed potion lists 4 ingredients; you need any 3 to claim it.
+
+Substitution Rule (by Ingredient Category):
+If you’re missing a specific ingredient, you may discard the other 2 ingredients from that same ingredient category to substitute for the missing one.
+
+Substitution consumes those 2 cards (they go to your discard).
+
+This often puts you “down a card,” which you’ll refill via normal draws/turns.
+
+Claiming:
+
+Reveal the 3 matching ingredients (accounting for any substitution), discard all used cards, and take the potion into your Crafting Table face-up.
+
+Immediately reveal a new potion from that same category’s deck into the center.
+
+No Category Repeat within a Potion:
+A crafted potion’s internal recipe rule is already enforced at design-time; players don’t need to check extra category restrictions beyond the substitution rule above.
+
+Ties: Only current player can claim during their turn, so no simultaneous claims.
+
+6) Potion Perks (One-time)
+
+Each claimed potion grants a one-time perk.
+
+When usable: Starting on your next turn, before, during, or after playing Spells (as appropriate to the perk).
+
+After use: Flip the potion face-down (perk spent).
+
+If stolen: See §9. A face-down potion remains spent and cannot be reactivated by anyone.
+
+See perks in Potions.txt
+
+7) Blocking Potion Effects (Category Triangle)
+
+Only potion effects can be blocked. Spells cannot be blocked.
+
+If a potion’s effect targets you, you may instantly play 1 Spell as a Block (out-of-turn allowed, the only out-of-turn play). If a player blocks a spell that targets multiple players, it is effectively blocked only for that person. All players have the chance to block.
+
+A Block must follow the category triangle:
+
+Maleficia beats Fortuna
+
+Fortuna beats Benedicta
+
+Benedicta beats Maleficia
+
+Practically: to block a Maleficia potion effect targeting you, you must play a Benedicta Spell (and so on).
+
+Note: In this mode, Spells serve offensive/utility on your turn and can serve as reactive Blocks against potion effects only.
+
+8) Spell (Action) Cards — Quick Reference
+
+(All Spells are played on your turn unless noted as a Block. Once played, cannot be blocked.)
+
+🕯 Circle Breaker — Skip the next player’s turn.
+
+🔁 Twist of Fate — Reverse direction of play.
+
+🐍 Venom Brew — Target player discards 1 random card.
+
+🔮 Astral Projection — Peek the top 3 cards of the Main Deck, keep 1, return the other 2 in any order.
+
+Foul Elixir: Can't go to hand, affects player immediately upon drawing. If given form initial hand, activates as soon as it is the player's turn.
+
+🪄 Crackling Cauldron — You draw 1 extra card and have a hand of +1 until you craft a potion.
+
+Summon from Beyond: Choose any player's discard pile; take 1 card from it.
+
+🕸 Hex Seal — Choose 1 ingredient category; that category is locked for all players (cannot be used to craft or substitute) for the rest of the game or until another Hex seal is placed. Only 1 can be active at a time.
+
+🎭 Thief’s Gamble (Game Mode 2) — Steal a potion from another player:
+
+Choose a target player and one potion in their Crafting Table.
+
+Select 4 cards from your hand and place them face-down (your “wager”).
+
+The target reveals whether they hold any pair of identical Ingredient cards (two copies with the same name).
+
+Success: If the target has a pair, the steal succeeds. You take the potion (face-orientation unchanged).
+
+Both players discard: your 4 wager cards, and the target discards the revealed pair.
+
+Fail (Busted): If the target has no pair, steal fails. You discard the 4 wager cards and lose your next turn.
+
+Counting toward 9: The stolen potion immediately counts as 3 in your Crafting Table; adjust at end of your turn.
+
+Note: Thief’s Gamble’s role is different in Game Mode 1; the above applies only to Game Mode 2.
+
+9) Stealing & Ownership
+
+A stolen potion moves into the thief’s Crafting Table.
+
+If it was face-up, it stays face-up (perk still unused only if it had not been used); if face-down, it stays face-down (perk spent).
+
+Perks on face-down potions cannot be re-used by anyone.
+
+10) Decks, Discards & Reshuffle
+
+Personal Discard Piles: Each player discards to their own pile (face-up).
+
+Other players may draw only the top card of any personal discard pile instead of drawing from the Main Deck.
+
+Exception: Spells cannot be drawn from discards unless a card effect explicitly allows it.
+
+When the Main Deck empties: Combine all players’ discard piles, shuffle to rebuild the Main Deck, continue play.
+
+Potion Deck empty: That category is unavailable for new crafts; the only way to acquire it is via stealing (Thief’s Gamble).
+
+11) Winning the Round
+
+The first player to own 1 potion from each category wins immediately.
+
+If reverse/skip effects alter order, resolve them normally; victory is checked after each complete turn.
+
+12) Edge Cases & Timing Defaults
+
+Random discard/draw: Shuffle the targeted player’s hand face-down and remove cards at random.
+
+Perk timing: Perks can be used beginning your next turn after claiming a potion.
+
+
+
+13) Quick Reference: Turn Summary
+
+Draw from Main Deck or any top personal discard (not Spells unless allowed).
+
+Play Spells / Craft (any number, any order).
+
+Spells: only on your turn; cannot be blocked.
+
+Craft: discard required ingredients; substitutions discard the two category cards.
+
+Reveal a new potion from that category after claiming.
+
+End Step: Discard down to 9 in your Crafting Table (hand + 3 per potion).
+
+If a potion was stolen from you, you may skip discarding in future turns until you return to 9.

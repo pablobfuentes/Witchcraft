@@ -6,35 +6,43 @@ Name
 
 Ingredients
 
+Effect
+
 Severance Draught
 
-Coffin Nails, Whispering Bark, Ghost Pepper Essence
+Coffin Nails, Whispering Bark, Ghost Pepper Essence, Clear Quartz
+
+Changes available potions of every category. Current potion is placed back in it's category deck, the deck reshuffled and a new potion is drawn of each for everyone to try to collect.
 
 Silence of the Grave
 
-Ghoul Tongue, Coffin Nails, Nightshade
+Ghoul Tongue, Coffin Nails, Nightshade, White Sage
+
+Everybody (including spell user) folds complete hand into deck, new hands are delt to everyone.
 
 Witch’s Chain
 
-Graveyard Dirt, Ashes of a Burnt Letter, Bat Wing
+Graveyard Dirt, Ashes of a Burnt Letter, Bat Wing, Spider Silk
+
+A potion of your choosing requires the exact 4 ingredients in it to be acquired. No substitution allowed.
 
 Maledicta Vitae
 
-Basilisk Fang, Starflower, Whispering Bark
+Basilisk Fang, Starflower, Whispering Bark, Raven Feather
+
+Everybody (including spell user) folds complete hand into deck, new hands are delt to everyone.
 
 Hex of Hollow Flame
 
-Raven Feather, Manticore Venom, Pumpkin Guts
+Raven Feather, Manticore Venom, Pumpkin Guts, Eye of Newt
+
+Changes available potions of every category. Current potion is placed back in it's category deck, the deck reshuffled and a new potion is drawn of each for everyone to try to collect.
 
 Bind of the Forgotten
 
-Graveyard Dirt, Nightshade, Yew Tree Branch
+Graveyard Dirt, Nightshade, Yew Tree Branch, Ashes of a Burnt Letter
 
-
-
-
-
-
+A potion of your choosing requires the exact 4 ingredients in it to be acquired. No substitution allowed.
 
 
 
@@ -44,39 +52,39 @@ Benedicta
 
 Lover’s Whisper
 
-Hair of a Virgin, Unicorn Hair, White Sage
+Hair of a Virgin, Unicorn Hair, White Sage, Starflower
+
+Ask a for a card to the group, the first player that has it (in the current turn order) shall give it to you. You have to comply with the total of cards in your crafting table by the end of the turn.
 
 Petal Ward Elixir
 
-Four Leaf Clover, Starflower, Spider Silk
+Four Leaf Clover, Starflower, Spider Silk, Amethyst
+
+Block any action card against you
 
 Heartfire Infusion
 
-Ghost Pepper Essence, Unicorn Hair, Crushed Pearl
+Ghost Pepper Essence, Unicorn Hair, Crushed Pearl, Moonstone Powder
+
+This potion takes the from of any other ingredient already used in a potion during this game
 
 Mirror Dew
 
-Clear Quartz, Moonstone Powder, Fairy Dust
+Clear Quartz, Moonstone Powder, Fairy Dust, Frankincense
+
+This potion takes the from of any other ingredient already used in a potion during this game
 
 Wispwine
 
-Frankincense, Lightning Bug Glow, Raven Feather
+Frankincense, Lightning Bug Glow, Raven Feather, Crushed Pearl 
+
+Ask a for a card to the group, the first player that has it (in the current turn order) shall give it to you. You have to comply with the total of cards in your crafting table by the end of the turn.
 
 Basilisk Balm
 
-Basilisk Fang, Crushed Pearl, Pumpkin Guts
+Basilisk Fang, Crushed Pearl, Pumpkin Guts, Hair of a Virgin
 
-
-
-
-
-
-
-
-
-
-
-
+Block any action card against you
 
 
 
@@ -85,27 +93,38 @@ Basilisk Fang, Crushed Pearl, Pumpkin Guts
 Fortuna
 
 
-
 Dreambinder Elixir
 
-Moonstone Powder, Spider Silk, White Sage
+Moonstone Powder, Spider Silk, White Sage, Fairy Dust
+
+See top cards equal to number of players x2 and order them however you like.
 
 Twist of Fate
 
-Amethyst, Hair of a Virgin, Eye of Newt
+Amethyst, Hair of a Virgin, Eye of Newt, Four Leaf Clover
+
+Reshuffle all discarded decks back into main deck
 
 Illusion’s Glee
 
-Mermaid Scale, Fairy Dust, Lightning Bug Glow
+Mermaid Scale, Fairy Dust, Lightning Bug Glow, Whispering Bark
+
+Any pair of cards you have acts as a wild card.
 
 Oracle’s Dew
 
-Clear Quartz, Mermaid Scale, Amethyst
+Clear Quartz, Mermaid Scale, Amethyst, Lightning Bug Glow
+
+See top cards equal to number of players x2 and order them however you like.
 
 Serpent’s Luck
 
-Yew Tree Branch, Four Leaf Clover, Manticore Venom
+Yew Tree Branch, Four Leaf Clover, Manticore Venom, Ghost Pepper Essence
+
+Any pair of cards you have acts as a wild card.
 
 Veilpiercer Tonic
 
-Ashes of a Burnt Letter, Frankincense, Eye of Newt
+Ashes of a Burnt Letter, Frankincense, Eye of Newt, Mermaid Scale
+
+Reshuffle all discarded decks back into main deck

@@ -55,6 +55,34 @@ const ACTIONS = [
 
 const WILD_CARD = { name: "Secret Ingredient", category: "Wild Card" };
 
+// Potion cards for Game Mode 2
+const POTIONS = {
+  Maleficia: [
+    { name: "Severance Draught", ingredients: ["Coffin Nails", "Whispering Bark", "Ghost Pepper Essence", "Clear Quartz"], summary: "Shuffle and reveal new potions in all categories", effect: "Changes available potions of every category. Current potion is placed back in it's category deck, the deck reshuffled and a new potion is drawn of each for everyone to try to collect." },
+    { name: "Silence of the Grave", ingredients: ["Ghoul Tongue", "Coffin Nails", "Nightshade", "White Sage"], summary: "Everyone discards hand and draws new cards", effect: "Everybody (including spell user) folds complete hand into deck, new hands are delt to everyone." },
+    { name: "Witch's Chain", ingredients: ["Graveyard Dirt", "Ashes of a Burnt Letter", "Bat Wing", "Spider Silk"], summary: "Lock one potion to require exact ingredients", effect: "A potion of your choosing requires the exact 4 ingredients in it to be acquired. No substitution allowed." },
+    { name: "Maledicta Vitae", ingredients: ["Fairy Dust", "Starflower", "Whispering Bark", "Raven Feather"], summary: "Everyone discards hand and draws new cards", effect: "Everybody (including spell user) folds complete hand into deck, new hands are delt to everyone." },
+    { name: "Hex of Hollow Flame", ingredients: ["Raven Feather", "Manticore Venom", "Pumpkin Guts", "Eye of Newt"], summary: "Shuffle and reveal new potions in all categories", effect: "Changes available potions of every category. Current potion is placed back in it's category deck, the deck reshuffled and a new potion is drawn of each for everyone to try to collect." },
+    { name: "Bind of the Forgotten", ingredients: ["Graveyard Dirt", "Nightshade", "Yew Tree Branch", "Ashes of a Burnt Letter"], summary: "Lock one potion to require exact ingredients", effect: "A potion of your choosing requires the exact 4 ingredients in it to be acquired. No substitution allowed." }
+  ],
+  Benedicta: [
+    { name: "Lover's Whisper", ingredients: ["Hair of a Virgin", "Unicorn Hair", "White Sage", "Starflower"], summary: "Request a card from others in turn order", effect: "Ask a for a card to the group, the first player that has it (in the current turn order) shall give it to you. You have to comply with the total of cards in your crafting table by the end of the turn." },
+    { name: "Petal Ward Elixir", ingredients: ["Four Leaf Clover", "Starflower", "Spider Silk", "Amethyst"], summary: "Block any action card played against you", effect: "Block any action card against you" },
+    { name: "Heartfire Infusion", ingredients: ["Ghost Pepper Essence", "Unicorn Hair", "Crushed Pearl", "Moonstone Powder"], summary: "Copy any ingredient used in completed potions", effect: "This potion takes the from of any other ingredient already used in a potion during this game" },
+    { name: "Mirror Dew", ingredients: ["Clear Quartz", "Moonstone Powder", "Fairy Dust", "Frankincense"], summary: "Copy any ingredient used in completed potions", effect: "This potion takes the from of any other ingredient already used in a potion during this game" },
+    { name: "Wispwine", ingredients: ["Frankincense", "Lightning Bug Glow", "Raven Feather", "Crushed Pearl"], summary: "Request a card from others in turn order", effect: "Ask a for a card to the group, the first player that has it (in the current turn order) shall give it to you. You have to comply with the total of cards in your crafting table by the end of the turn." },
+    { name: "Basilisk Balm", ingredients: ["Fairy Dust", "Crushed Pearl", "Pumpkin Guts", "Hair of a Virgin"], summary: "Block any action card played against you", effect: "Block any action card against you" }
+  ],
+  Fortuna: [
+    { name: "Dreambinder Elixir", ingredients: ["Moonstone Powder", "Spider Silk", "White Sage", "Fairy Dust"], summary: "See and reorder top cards of deck", effect: "See top cards equal to number of players x2 and order them however you like." },
+    { name: "Twist of Fate", ingredients: ["Amethyst", "Hair of a Virgin", "Eye of Newt", "Four Leaf Clover"], summary: "Reshuffle all discards back into main deck", effect: "Reshuffle all discarded decks back into main deck" },
+    { name: "Illusion's Glee", ingredients: ["Mermaid Scale", "Fairy Dust", "Lightning Bug Glow", "Whispering Bark"], summary: "Your pairs can substitute as wild cards", effect: "Any pair of cards you have acts as a wild card." },
+    { name: "Oracle's Dew", ingredients: ["Clear Quartz", "Mermaid Scale", "Amethyst", "Lightning Bug Glow"], summary: "See and reorder top cards of deck", effect: "See top cards equal to number of players x2 and order them however you like." },
+    { name: "Serpent's Luck", ingredients: ["Yew Tree Branch", "Four Leaf Clover", "Manticore Venom", "Ghost Pepper Essence"], summary: "Your pairs can substitute as wild cards", effect: "Any pair of cards you have acts as a wild card." },
+    { name: "Veilpiercer Tonic", ingredients: ["Ashes of a Burnt Letter", "Frankincense", "Eye of Newt", "Mermaid Scale"], summary: "Reshuffle all discards back into main deck", effect: "Reshuffle all discarded decks back into main deck" }
+  ]
+};
+
 const COPIES_PER_INGREDIENT = 4; // 27 * 4 = 108
 const COPIES_PER_ACTION = 3; // default copies for each Action card
 const HAND_SIZE = 9; // per Gameplay 1 Rules
@@ -139,6 +167,7 @@ const state = {
   winnerId: null,
   direction: 1,
   skipNextCount: 0,
+  skipPlayerNextTurn: null, // ID of player to skip on their next turn
   blockEffect: null, // { category: string, turnsRemaining: number }
   discardsThisTurn: 0,
   pendingAction: null,
@@ -146,12 +175,25 @@ const state = {
   tempHandBonus: 0,
   dragIndex: null,
   round: 1,
+  gameMode: 1, // 1 = The Apothecary, 2 = The Alchemist
+  // Game Mode 2 only:
+  potionDecks: { Maleficia: [], Benedicta: [], Fortuna: [] },
+  revealedPotions: { Maleficia: null, Benedicta: null, Fortuna: null },
 };
 
 function createPlayers(count) {
   const players = [];
   for (let i = 0; i < count; i++) {
-    players.push({ id: i, name: `Player ${i + 1}`, hand: [], discard: [], melds: [], tempHandBonus: 0, turns: 0 });
+    players.push({ 
+      id: i, 
+      name: `Player ${i + 1}`, 
+      hand: [], 
+      discard: [], 
+      melds: [], // Game Mode 1
+      potions: [], // Game Mode 2: { potion: potionCard, faceUp: bool }
+      tempHandBonus: 0, 
+      turns: 0 
+    });
   }
   return players;
 }
@@ -165,12 +207,39 @@ function dealInitialHands(deck, players) {
   }
 }
 
+function buildPotionDecks() {
+  const decks = { Maleficia: [], Benedicta: [], Fortuna: [] };
+  for (const [category, potions] of Object.entries(POTIONS)) {
+    decks[category] = potions.map((p, idx) => ({
+      id: `POT-${category}-${idx}`,
+      type: "potion",
+      name: p.name,
+      category: category,
+      ingredients: p.ingredients,
+      summary: p.summary,
+      effect: p.effect
+    }));
+    shuffle(decks[category]);
+  }
+  return decks;
+}
+
+function revealPotionFromDeck(category) {
+  const deck = state.potionDecks[category];
+  if (deck.length > 0) {
+    state.revealedPotions[category] = deck.pop();
+  } else {
+    state.revealedPotions[category] = null;
+  }
+}
+
 // Rendering
 const els = {
   home: document.getElementById("home"),
   game: document.getElementById("game"),
   startBtn: document.getElementById("startBtn"),
   onlineBtn: document.getElementById("onlineBtn"),
+  gameMode: document.getElementById("gameMode"),
   playerCount: document.getElementById("playerCount"),
   playerName: document.getElementById("playerName"),
   deck: document.getElementById("deck"),
@@ -189,6 +258,8 @@ const els = {
   winText: document.getElementById("winText"),
   playAgainBtn: document.getElementById("playAgainBtn"),
   bubbles: document.getElementById("bubbles"),
+  potionsRow: document.getElementById("potionsRow"),
+  potionsDisplay: document.getElementById("potionsDisplay"),
 };
 
 // Online mode
@@ -219,6 +290,46 @@ function renderDeck() {
   }
 }
 
+function renderPotions() {
+  if (state.gameMode !== 2 || !els.potionsRow || !els.potionsDisplay) return;
+  
+  els.potionsRow.classList.remove("hidden");
+  els.potionsDisplay.innerHTML = "";
+  
+  const categories = ["Maleficia", "Benedicta", "Fortuna"];
+  categories.forEach(cat => {
+    const potionWrap = document.createElement("div");
+    potionWrap.className = "potion-slot";
+    
+    const label = document.createElement("div");
+    label.className = "potion-label";
+    label.textContent = cat;
+    potionWrap.appendChild(label);
+    
+    const potion = state.revealedPotions[cat];
+    if (potion) {
+      const potionEl = cardElement(potion, true);
+      if (potion.noSubstitution) {
+        const lockBadge = document.createElement("div");
+        lockBadge.className = "pill";
+        lockBadge.style.backgroundColor = "#d32f2f";
+        lockBadge.style.color = "white";
+        lockBadge.style.marginTop = "4px";
+        lockBadge.textContent = "🔒 No Substitution";
+        potionEl.appendChild(lockBadge);
+      }
+      potionWrap.appendChild(potionEl);
+    } else {
+      const empty = document.createElement("div");
+      empty.className = "card back";
+      empty.textContent = "None Available";
+      potionWrap.appendChild(empty);
+    }
+    
+    els.potionsDisplay.appendChild(potionWrap);
+  });
+}
+
 function cardElement(card, faceUp) {
   if (!faceUp) {
     const back = document.createElement("div");
@@ -247,6 +358,28 @@ function cardElement(card, faceUp) {
     return el;
   }
 
+  if (card.type === "potion") {
+    const ingredients = document.createElement("div");
+    ingredients.className = "potion-ingredients";
+    const ingredientsList = card.ingredients.map(ing => {
+      const category = getIngredientCategory(ing);
+      const initials = category ? getCategoryInitials(category) : "??";
+      const colorClass = category ? categoryToClass(category) : "";
+      return `<span class="ingredient-badge ${colorClass}">${initials}</span> ${ing}`;
+    }).join('<br>');
+    ingredients.innerHTML = `<strong>Requires any 3 of:</strong><br>${ingredientsList}`;
+    
+    const effect = document.createElement("div");
+    effect.className = "potion-effect";
+    effect.innerHTML = `<strong>Effect:</strong> ${card.summary || card.effect}`;
+    
+    el.appendChild(top);
+    el.appendChild(title);
+    el.appendChild(ingredients);
+    el.appendChild(effect);
+    return el;
+  }
+
   const bottom = document.createElement("div");
   bottom.className = "meta";
   bottom.textContent = card.type === "ingredient" ? "Ingredient" : (card.type === "action" ? "Action" : "Wild");
@@ -267,9 +400,12 @@ function categoryToClass(category) {
     case "Death & the Beyond": return "cat-death";
     case "Celestial & Dream Magic": return "cat-celestial";
     case "Crystals & Earthbound Magic": return "cat-crystals";
-    case "Witch’s Pantry": return "cat-pantry";
+    case "Witch's Pantry": return "cat-pantry";
     case "Action": return "cat-action";
     case "Wild Card": return "cat-wild";
+    case "Maleficia": return "cat-maleficia";
+    case "Benedicta": return "cat-benedicta";
+    case "Fortuna": return "cat-fortuna";
     default: return "";
   }
 }
@@ -317,15 +453,40 @@ function renderPlayers() {
 
     const meldsWrap = document.createElement("div");
     meldsWrap.className = "melds";
-    for (const meld of player.melds) {
-      const meldEl = document.createElement("div");
-      meldEl.className = "meld";
-      meld.forEach((c, idx) => {
-        const ce = cardElement(c, true);
-        if (idx > 0) ce.style.marginLeft = "-60px"; // 50% overlap of 120px width
-        meldEl.appendChild(ce);
+    
+    // Define isActive early so it can be used in potion rendering
+    const isActive = onlineMode ? (player.id === myId) : (idx === state.activePlayer);
+    
+    if (state.gameMode === 2) {
+      // Show potions in Game Mode 2
+      (player.potions || []).forEach((potionData, potIdx) => {
+        const potionEl = document.createElement("div");
+        potionEl.className = "meld";
+        const card = cardElement(potionData.potion, true);
+        if (!potionData.faceUp) {
+          card.classList.add("spent");
+          card.title = "Perk used";
+        } else if (isActive && !state.pendingAction && state.turnPhase === "discard" && player.turns > (potionData.turnClaimed || 0)) {
+          // Can use perk if it's your turn, not your first turn after claiming
+          card.classList.add("clickable");
+          card.title = "Click to use perk";
+          card.addEventListener("click", () => usePotionPerk(idx, potIdx));
+        }
+        potionEl.appendChild(card);
+        meldsWrap.appendChild(potionEl);
       });
-      meldsWrap.appendChild(meldEl);
+    } else {
+      // Show melds in Game Mode 1
+      for (const meld of player.melds) {
+        const meldEl = document.createElement("div");
+        meldEl.className = "meld";
+        meld.forEach((c, cardIdx) => {
+          const ce = cardElement(c, true);
+          if (cardIdx > 0) ce.style.marginLeft = "-60px"; // 50% overlap of 120px width
+          meldEl.appendChild(ce);
+        });
+        meldsWrap.appendChild(meldEl);
+      }
     }
 
     const row = document.createElement("div");
@@ -335,7 +496,6 @@ function renderPlayers() {
 
     const hand = document.createElement("div");
     hand.className = "hand";
-    const isActive = onlineMode ? (player.id === myId) : (idx === state.activePlayer);
     player.hand.forEach((card, idx) => {
       const el = cardElement(card, isActive);
       if (isActive && !state.gameOver && !state.pendingAction) {
@@ -389,33 +549,72 @@ function renderPlayers() {
       const actions = document.createElement("div");
       actions.className = "actions";
 
-      // Sorting tool always available to active player
+      // Sorting tools always available to active player
       const sortBtn = document.createElement("button");
       sortBtn.className = "btn";
       sortBtn.textContent = "Sort by Category";
       sortBtn.addEventListener("click", sortActiveHandByCategory);
       actions.appendChild(sortBtn);
+      
+      if (state.gameMode === 2) {
+        const sortPotionsBtn = document.createElement("button");
+        sortPotionsBtn.className = "btn";
+        sortPotionsBtn.textContent = "Sort by Potions";
+        sortPotionsBtn.addEventListener("click", sortActiveHandByPotions);
+        actions.appendChild(sortPotionsBtn);
+      }
 
       if (state.turnPhase === "discard") {
         const selCount = state.selectedIndices.length;
-        const canMeld = selCount === 3 && validateMeld(getSelectedCards());
-        const maybeBlocked = selCount === 3 && !canMeld && isValidMeldIgnoringBlock(getSelectedCards()) && state.blockEffect;
-        if (canMeld) {
-          const meldBtn = document.createElement("button");
-          meldBtn.className = "btn meld";
-          meldBtn.textContent = "Meld Selected";
-          meldBtn.addEventListener("click", () => {
-            const ids = getSelectedCards().map(c => c.id);
-            if (onlineMode && socket) socket.emit('meld', ids);
-            else meldSelected();
-          });
-          actions.appendChild(meldBtn);
-        }
-        if (maybeBlocked) {
-          const note = document.createElement("div");
-          note.className = "hint";
-          note.textContent = `Meld blocked by Hex Seal: ${state.blockEffect.category}`;
-          actions.appendChild(note);
+        
+        if (state.gameMode === 2) {
+          // Game Mode 2: Check for potion crafting
+          const selectedCards = getSelectedCards();
+          const categories = ["Maleficia", "Benedicta", "Fortuna"];
+          
+          for (const cat of categories) {
+            const potion = state.revealedPotions[cat];
+            if (potion) {
+              const craftResult = canCraftPotion(selectedCards, potion);
+              if (craftResult) {
+                const craftBtn = document.createElement("button");
+                craftBtn.className = "btn meld";
+                craftBtn.textContent = `Craft ${potion.name}`;
+                if (craftResult.substitution) {
+                  craftBtn.title = `Using substitution: ${craftResult.substitution.cards.join(", ")} for ${craftResult.substitution.missing}`;
+                }
+                craftBtn.addEventListener("click", () => {
+                  if (onlineMode && socket) {
+                    // TODO: Add online support for GM2
+                  } else {
+                    craftPotion(cat);
+                  }
+                });
+                actions.appendChild(craftBtn);
+              }
+            }
+          }
+        } else {
+          // Game Mode 1: Check for melding
+          const canMeld = selCount === 3 && validateMeld(getSelectedCards());
+          const maybeBlocked = selCount === 3 && !canMeld && isValidMeldIgnoringBlock(getSelectedCards()) && state.blockEffect;
+          if (canMeld) {
+            const meldBtn = document.createElement("button");
+            meldBtn.className = "btn meld";
+            meldBtn.textContent = "Meld Selected";
+            meldBtn.addEventListener("click", () => {
+              const ids = getSelectedCards().map(c => c.id);
+              if (onlineMode && socket) socket.emit('meld', ids);
+              else meldSelected();
+            });
+            actions.appendChild(meldBtn);
+          }
+          if (maybeBlocked) {
+            const note = document.createElement("div");
+            note.className = "hint";
+            note.textContent = `Meld blocked by Hex Seal: ${state.blockEffect.category}`;
+            actions.appendChild(note);
+          }
         }
         if (selCount === 1 && getRemainingDiscards() > 0) {
           const discardBtn = document.createElement("button");
@@ -458,12 +657,15 @@ function renderPlayers() {
 
 function renderAll() {
   renderDeck();
+  renderPotions();
   renderPlayers();
   setPhaseText();
 }
 
 function startGame() {
   const count = Math.max(1, Math.min(4, parseInt(els.playerCount.value, 10) || 2));
+  const gameMode = parseInt(els.gameMode?.value || "1", 10);
+  
   state.players = createPlayers(count);
   state.activePlayer = 0;
   state.deck = buildDeck();
@@ -473,15 +675,31 @@ function startGame() {
   state.winnerId = null;
   state.direction = 1;
   state.skipNextCount = 0;
+  state.skipPlayerNextTurn = null;
   state.blockEffect = null;
   state.discardsThisTurn = 0;
   state.minDiscardsThisTurn = 0;
   state.tempHandBonus = 0;
   state.round = 1;
+  state.gameMode = gameMode;
+  
+  // Game Mode 2: Initialize potion decks
+  if (gameMode === 2) {
+    state.potionDecks = buildPotionDecks();
+    revealPotionFromDeck("Maleficia");
+    revealPotionFromDeck("Benedicta");
+    revealPotionFromDeck("Fortuna");
+  } else {
+    state.potionDecks = { Maleficia: [], Benedicta: [], Fortuna: [] };
+    state.revealedPotions = { Maleficia: null, Benedicta: null, Fortuna: null };
+  }
+  
   dealInitialHands(state.deck, state.players);
   els.home.classList.add("hidden");
   els.game.classList.remove("hidden");
   renderAll();
+  // Scroll to game area smoothly
+  els.game.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function nextPlayer(delta) {
@@ -538,6 +756,11 @@ function endTurn() {
   // apply skip if any
   if (state.skipNextCount > 0) {
     state.skipNextCount -= 1;
+    state.activePlayer = (state.activePlayer + state.direction + n) % n;
+  }
+  // Check if this specific player should be skipped on their next turn
+  if (state.skipPlayerNextTurn === state.activePlayer) {
+    state.skipPlayerNextTurn = null;
     state.activePlayer = (state.activePlayer + state.direction + n) % n;
   }
   state.turnPhase = "draw";
@@ -662,9 +885,14 @@ if (els.onlineBtn) {
       state.turnPhase = srvState.turnPhase;
       state.blockEffect = srvState.blocked ? { category: srvState.blocked } : null;
       state.selectedIndices = [];
+      const wasHidden = els.game.classList.contains("hidden");
       els.home.classList.add("hidden");
       els.game.classList.remove("hidden");
       renderAll();
+      // Scroll to game area when first starting
+      if (wasHidden) {
+        els.game.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
     // Server action prompts
     socket.on('prompt_choose_category', ({ categories, actionCardId }) => {
@@ -898,6 +1126,13 @@ function handleActionCard(card, opts = { source: "draw" }) {
         const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "Resolve";
         btn.addEventListener("click", () => { state.skipNextCount += 1; finalizeActionCard(card); });
         footer.appendChild(btn);
+        const cancelBtn = document.createElement("button"); cancelBtn.className = "btn"; cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+          renderAll();
+        });
+        footer.appendChild(cancelBtn);
       });
       return;
     }
@@ -909,6 +1144,13 @@ function handleActionCard(card, opts = { source: "draw" }) {
         const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "Resolve";
         btn.addEventListener("click", () => { state.direction *= -1; finalizeActionCard(card); });
         footer.appendChild(btn);
+        const cancelBtn = document.createElement("button"); cancelBtn.className = "btn"; cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+          renderAll();
+        });
+        footer.appendChild(cancelBtn);
       });
       return;
     }
@@ -930,6 +1172,13 @@ function handleActionCard(card, opts = { source: "draw" }) {
           finalizeActionCard(card);
         });
         footer.appendChild(btn);
+        const cancelBtn = document.createElement("button"); cancelBtn.className = "btn"; cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+          renderAll();
+        });
+        footer.appendChild(cancelBtn);
       });
       return;
     }
@@ -947,6 +1196,13 @@ function handleActionCard(card, opts = { source: "draw" }) {
           finalizeActionCard(card);
         });
         footer.appendChild(btn);
+        const cancelBtn = document.createElement("button"); cancelBtn.className = "btn"; cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+          renderAll();
+        });
+        footer.appendChild(cancelBtn);
       });
       return;
     }
@@ -1037,46 +1293,165 @@ function handleActionCard(card, opts = { source: "draw" }) {
       return;
     }
     case "Thief's Gamble": {
-      // select opponent, blind pick one of their cards by position (backs shown), then you discard 1 of your choosing
-      const choices = state.players.filter(p => p.id !== state.activePlayer && p.hand.length > 0);
-      if (choices.length === 0) return finalizeActionCard(card);
-      openOverlay(container => {
-        container.appendChild(cardElement(card, true));
-        const h = document.createElement("h3"); h.textContent = "Thief's Gamble"; container.appendChild(h);
-        const p = document.createElement("p"); p.textContent = "Choose a player, then pick one of their facedown cards (blind). Then discard 1 from your hand."; container.appendChild(p);
-        const row = document.createElement("div"); row.className = "choices"; container.appendChild(row);
-        for (const opp of choices) {
-          const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = opp.name;
-          btn.addEventListener("click", () => {
-            container.innerHTML = "";
-            const h2 = document.createElement("h3"); h2.textContent = `Pick one facedown card from ${opp.name}`; container.appendChild(h2);
-            const backsRow = document.createElement("div"); backsRow.className = "cards"; container.appendChild(backsRow);
-            opp.hand.forEach((_, i) => {
-              const back = document.createElement("div"); back.className = "card back clickable"; back.textContent = "Card"; back.title = `Pick card #${i+1}`;
-              back.addEventListener("click", () => {
-                const [taken] = opp.hand.splice(i, 1);
-                if (taken) state.players[state.activePlayer].hand.push(taken);
-                // now choose a card to discard from your hand
-                container.innerHTML = "";
-                const h3e = document.createElement("h3"); h3e.textContent = "Discard 1 card from your hand"; container.appendChild(h3e);
-                const cardsRow = document.createElement("div"); cardsRow.className = "cards"; container.appendChild(cardsRow);
-                const player = state.players[state.activePlayer];
-                player.hand.forEach((c, j) => {
-                  const ce = cardElement(c, true); ce.classList.add("clickable"); ce.title = "Discard this card";
-                  ce.addEventListener("click", () => {
-                    const [dc] = player.hand.splice(j, 1);
-                    if (dc) player.discard.push(dc);
-                    finalizeActionCard(card);
-                  });
-                  cardsRow.appendChild(ce);
+      if (state.gameMode === 2) {
+        // Game Mode 2 version: Steal a potion by wagering 4 cards
+        const choices = state.players.filter(p => p.id !== state.activePlayer && (p.potions || []).length > 0);
+        if (choices.length === 0) return finalizeActionCard(card);
+        
+        openOverlay(container => {
+          container.appendChild(cardElement(card, true));
+          const h = document.createElement("h3"); h.textContent = "Thief's Gamble (GM2)"; container.appendChild(h);
+          const p = document.createElement("p"); p.textContent = "Choose a player and one of their potions to steal. You'll wager 4 cards."; container.appendChild(p);
+          const row = document.createElement("div"); row.className = "choices"; container.appendChild(row);
+          
+          for (const opp of choices) {
+            const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = opp.name;
+            btn.addEventListener("click", () => {
+              // Show their potions
+              container.innerHTML = "";
+              const h2 = document.createElement("h3"); h2.textContent = `Choose a potion from ${opp.name}`; container.appendChild(h2);
+              const potionsRow = document.createElement("div"); potionsRow.className = "cards"; container.appendChild(potionsRow);
+              
+              opp.potions.forEach((potionData, potIdx) => {
+                const potEl = cardElement(potionData.potion, true);
+                potEl.classList.add("clickable");
+                potEl.title = "Steal this potion";
+                potEl.addEventListener("click", () => {
+                  // Select 4 cards as wager
+                  container.innerHTML = "";
+                  const h3 = document.createElement("h3"); h3.textContent = "Select 4 cards as your wager"; container.appendChild(h3);
+                  const cardsRow = document.createElement("div"); cardsRow.className = "cards"; container.appendChild(cardsRow);
+                  const player = state.players[state.activePlayer];
+                  let selectedWager = [];
+                  
+                  const renderWagerSelection = () => {
+                    cardsRow.innerHTML = "";
+                    player.hand.forEach((c, idx) => {
+                      const ce = cardElement(c, true);
+                      ce.classList.add("clickable");
+                      if (selectedWager.includes(idx)) ce.classList.add("selected");
+                      ce.addEventListener("click", () => {
+                        const i = selectedWager.indexOf(idx);
+                        if (i >= 0) selectedWager.splice(i, 1);
+                        else if (selectedWager.length < 4) selectedWager.push(idx);
+                        renderWagerSelection();
+                      });
+                      cardsRow.appendChild(ce);
+                    });
+                    
+                    if (selectedWager.length === 4) {
+                      const confirmBtn = document.createElement("button");
+                      confirmBtn.className = "btn";
+                      confirmBtn.textContent = "Confirm Wager";
+                      confirmBtn.addEventListener("click", () => {
+                        // Check if opponent has a pair
+                        const oppIngredients = opp.hand.filter(c => c.type === "ingredient").map(c => c.name);
+                        const counts = {};
+                        for (const name of oppIngredients) counts[name] = (counts[name] || 0) + 1;
+                        const hasPair = Object.values(counts).some(v => v >= 2);
+                        
+                        if (hasPair) {
+                          // Success! Steal the potion
+                          const [stolenPotion] = opp.potions.splice(potIdx, 1);
+                          player.potions = player.potions || [];
+                          player.potions.push(stolenPotion);
+                          
+                          // Discard wager cards
+                          selectedWager.sort((a, b) => b - a);
+                          for (const idx of selectedWager) {
+                            const [c] = player.hand.splice(idx, 1);
+                            if (c) player.discard.push(c);
+                          }
+                          
+                          // Opponent discards their pair
+                          for (const name in counts) {
+                            if (counts[name] >= 2) {
+                              for (let i = 0; i < 2; i++) {
+                                const idx = opp.hand.findIndex(c => c.name === name);
+                                if (idx >= 0) {
+                                  const [c] = opp.hand.splice(idx, 1);
+                                  if (c) opp.discard.push(c);
+                                }
+                              }
+                              break;
+                            }
+                          }
+                          
+                          container.innerHTML = "";
+                          const success = document.createElement("h3"); success.textContent = "Success! Potion stolen!"; container.appendChild(success);
+                          const okBtn = document.createElement("button"); okBtn.className = "btn"; okBtn.textContent = "OK";
+                          okBtn.addEventListener("click", () => finalizeActionCard(card));
+                          container.appendChild(okBtn);
+                        } else {
+                          // Failed! Discard wager and lose next turn
+                          selectedWager.sort((a, b) => b - a);
+                          for (const idx of selectedWager) {
+                            const [c] = player.hand.splice(idx, 1);
+                            if (c) player.discard.push(c);
+                          }
+                          state.skipPlayerNextTurn = state.activePlayer;
+                          
+                          container.innerHTML = "";
+                          const fail = document.createElement("h3"); fail.textContent = "Busted! No pair found. You lose your next turn."; container.appendChild(fail);
+                          const okBtn = document.createElement("button"); okBtn.className = "btn"; okBtn.textContent = "OK";
+                          okBtn.addEventListener("click", () => finalizeActionCard(card));
+                          container.appendChild(okBtn);
+                        }
+                      });
+                      container.appendChild(confirmBtn);
+                    }
+                  };
+                  
+                  renderWagerSelection();
                 });
+                potionsRow.appendChild(potEl);
               });
-              backsRow.appendChild(back);
             });
-          });
-          row.appendChild(btn);
-        }
-      });
+            row.appendChild(btn);
+          }
+        });
+      } else {
+        // Game Mode 1 version: blind pick one card, then discard 1
+        const choices = state.players.filter(p => p.id !== state.activePlayer && p.hand.length > 0);
+        if (choices.length === 0) return finalizeActionCard(card);
+        openOverlay(container => {
+          container.appendChild(cardElement(card, true));
+          const h = document.createElement("h3"); h.textContent = "Thief's Gamble"; container.appendChild(h);
+          const p = document.createElement("p"); p.textContent = "Choose a player, then pick one of their facedown cards (blind). Then discard 1 from your hand."; container.appendChild(p);
+          const row = document.createElement("div"); row.className = "choices"; container.appendChild(row);
+          for (const opp of choices) {
+            const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = opp.name;
+            btn.addEventListener("click", () => {
+              container.innerHTML = "";
+              const h2 = document.createElement("h3"); h2.textContent = `Pick one facedown card from ${opp.name}`; container.appendChild(h2);
+              const backsRow = document.createElement("div"); backsRow.className = "cards"; container.appendChild(backsRow);
+              opp.hand.forEach((_, i) => {
+                const back = document.createElement("div"); back.className = "card back clickable"; back.textContent = "Card"; back.title = `Pick card #${i+1}`;
+                back.addEventListener("click", () => {
+                  const [taken] = opp.hand.splice(i, 1);
+                  if (taken) state.players[state.activePlayer].hand.push(taken);
+                  // now choose a card to discard from your hand
+                  container.innerHTML = "";
+                  const h3e = document.createElement("h3"); h3e.textContent = "Discard 1 card from your hand"; container.appendChild(h3e);
+                  const cardsRow = document.createElement("div"); cardsRow.className = "cards"; container.appendChild(cardsRow);
+                  const player = state.players[state.activePlayer];
+                  player.hand.forEach((c, j) => {
+                    const ce = cardElement(c, true); ce.classList.add("clickable"); ce.title = "Discard this card";
+                    ce.addEventListener("click", () => {
+                      const [dc] = player.hand.splice(j, 1);
+                      if (dc) player.discard.push(dc);
+                      finalizeActionCard(card);
+                    });
+                    cardsRow.appendChild(ce);
+                  });
+                });
+                backsRow.appendChild(back);
+              });
+            });
+            row.appendChild(btn);
+          }
+        });
+      }
       return;
     }
     case "Summon from beyond":
@@ -1117,6 +1492,10 @@ function handleActionCard(card, opts = { source: "draw" }) {
 
 // Selection helpers & meld validation
 function getMeldedCount(player) {
+  if (state.gameMode === 2) {
+    // In Game Mode 2, potions count as 3 each
+    return (player.potions || []).length * 3;
+  }
   return player.melds.reduce((sum, m) => sum + m.length, 0);
 }
 
@@ -1141,8 +1520,573 @@ function toggleSelect(index) {
   if (state.pendingAction) return;
   const i = state.selectedIndices.indexOf(index);
   if (i >= 0) state.selectedIndices.splice(i, 1);
-  else if (state.selectedIndices.length < 3) state.selectedIndices.push(index);
+  else {
+    const maxSelect = state.gameMode === 2 ? 5 : 3; // In GM2, may need more cards for substitution
+    if (state.selectedIndices.length < maxSelect) state.selectedIndices.push(index);
+  }
   renderPlayers();
+}
+
+// Get ingredient category for a card
+function getIngredientCategory(cardName) {
+  const ing = INGREDIENTS.find(i => i.name === cardName);
+  return ing ? ing.category : null;
+}
+
+// Get category initials (2 letters)
+function getCategoryInitials(category) {
+  const initials = {
+    "Occult Rituals": "OR",
+    "Body & Transformation": "BT",
+    "Sacred Herbs & Botanicals": "SH",
+    "Purification & Blessing": "PB",
+    "Mythical Beasts": "MB",
+    "Death & the Beyond": "DB",
+    "Celestial & Dream Magic": "CD",
+    "Crystals & Earthbound Magic": "CE",
+    "Witch's Pantry": "WP"
+  };
+  return initials[category] || "??";
+}
+
+// Check if selected cards can craft a potion (with substitution)
+function canCraftPotion(cards, potion) {
+  if (!potion || !potion.ingredients) return null;
+  
+  const required = potion.ingredients.slice(); // 4 ingredients required
+  const ingredientCards = cards.filter(c => c.type === "ingredient");
+  
+  // Build a map of what we have
+  const available = ingredientCards.map(c => c.name);
+  
+  // Need any 3 of the 4 ingredients
+  let matched = [];
+  let unmatched = [];
+  
+  for (const req of required) {
+    const idx = available.indexOf(req);
+    if (idx >= 0) {
+      matched.push(req);
+      available.splice(idx, 1);
+    } else {
+      unmatched.push(req);
+    }
+  }
+  
+  // If we have 3 or more matches, we can craft directly
+  if (matched.length >= 3) {
+    return { direct: matched.slice(0, 3), substitution: null };
+  }
+  
+  // If potion is locked (Witch's Chain/Bind of the Forgotten), no substitution allowed
+  if (potion.noSubstitution) {
+    return null;
+  }
+  
+  // If we have 2 matches, check if we can substitute for one of the missing ingredients
+  if (matched.length === 2) {
+    // Try to substitute for each unmatched ingredient
+    for (const missing of unmatched) {
+      const missingCategory = getIngredientCategory(missing);
+      if (!missingCategory) continue;
+      
+      // Check if we have 2 other cards from the same category (not already matched)
+      const categoryCards = ingredientCards.filter(c => 
+        getIngredientCategory(c.name) === missingCategory &&
+        !matched.includes(c.name)
+      );
+      
+      if (categoryCards.length >= 2) {
+        return { 
+          direct: matched, 
+          substitution: { 
+            missing: missing, 
+            category: missingCategory, 
+            cards: categoryCards.slice(0, 2).map(c => c.name) 
+          } 
+        };
+      }
+    }
+  }
+  
+  return null;
+}
+
+// Craft a potion
+function craftPotion(potionCategory) {
+  if (state.gameMode !== 2) return;
+  if (state.pendingAction) return;
+  
+  const player = state.players[state.activePlayer];
+  const potion = state.revealedPotions[potionCategory];
+  if (!potion) return;
+  
+  const selectedCards = getSelectedCards();
+  const craftResult = canCraftPotion(selectedCards, potion);
+  
+  if (!craftResult) return;
+  
+  // Remove used cards from hand
+  const usedCardNames = [...craftResult.direct];
+  if (craftResult.substitution) {
+    usedCardNames.push(...craftResult.substitution.cards);
+  }
+  
+  // Remove cards in reverse order of indices
+  const sorted = [...state.selectedIndices].sort((a, b) => b - a);
+  const removed = [];
+  for (const idx of sorted) {
+    const [c] = player.hand.splice(idx, 1);
+    if (c) removed.push(c);
+  }
+  
+  // Discard used cards
+  removed.forEach(c => player.discard.push(c));
+  
+  // Claim the potion
+  player.potions = player.potions || [];
+  player.potions.push({ potion: potion, faceUp: true, turnClaimed: player.turns });
+  
+  // Reveal new potion from that category
+  revealPotionFromDeck(potionCategory);
+  
+  state.selectedIndices = [];
+  
+  // Check win condition
+  checkWinAfterCraft(player);
+  
+  renderAll();
+}
+
+// Use a potion's perk
+function usePotionPerk(playerIdx, potionIdx) {
+  if (state.gameMode !== 2) return;
+  if (state.pendingAction) return;
+  
+  const player = state.players[playerIdx];
+  const potionData = player.potions[potionIdx];
+  if (!potionData || !potionData.faceUp) return;
+  
+  const potion = potionData.potion;
+  
+  // Mark as pending so we can't do other actions
+  state.pendingAction = { type: 'potion-perk', potion: potion };
+  
+  // Implement each potion effect
+  switch (potion.name) {
+    case "Severance Draught":
+    case "Hex of Hollow Flame":
+      // Changes available potions of every category
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = "Shuffle and Reveal New Potions";
+        container.appendChild(h);
+        const p = document.createElement("p");
+        p.textContent = potion.effect;
+        container.appendChild(p);
+        const btnRow = document.createElement("div");
+        btnRow.className = "footer";
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = "Activate";
+        btn.addEventListener("click", () => {
+          // Return current potions to their decks and reshuffle
+          ["Maleficia", "Benedicta", "Fortuna"].forEach(cat => {
+            const current = state.revealedPotions[cat];
+            if (current) {
+              state.potionDecks[cat].push(current);
+              shuffle(state.potionDecks[cat]);
+            }
+            revealPotionFromDeck(cat);
+          });
+          finalizePotionPerk(playerIdx, potionIdx);
+        });
+        btnRow.appendChild(btn);
+        const cancelBtn = document.createElement("button");
+        cancelBtn.className = "btn";
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+        });
+        btnRow.appendChild(cancelBtn);
+        container.appendChild(btnRow);
+      });
+      break;
+      
+    case "Silence of the Grave":
+    case "Maledicta Vitae":
+      // Everyone folds hand into deck, new hands dealt
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = "Reshuffle All Hands";
+        container.appendChild(h);
+        const p = document.createElement("p");
+        p.textContent = potion.effect;
+        container.appendChild(p);
+        const btnRow = document.createElement("div");
+        btnRow.className = "footer";
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = "Activate";
+        btn.addEventListener("click", () => {
+          // Fold all hands back into deck
+          state.players.forEach(p => {
+            while (p.hand.length > 0) {
+              state.deck.push(p.hand.pop());
+            }
+          });
+          shuffle(state.deck);
+          // Deal new hands
+          dealInitialHands(state.deck, state.players);
+          finalizePotionPerk(playerIdx, potionIdx);
+        });
+        btnRow.appendChild(btn);
+        const cancelBtn = document.createElement("button");
+        cancelBtn.className = "btn";
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+        });
+        btnRow.appendChild(cancelBtn);
+        container.appendChild(btnRow);
+      });
+      break;
+      
+    case "Twist of Fate":
+    case "Veilpiercer Tonic":
+      // Reshuffle all discarded decks back into main deck
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = "Reshuffle Discards";
+        container.appendChild(h);
+        const p = document.createElement("p");
+        p.textContent = potion.effect;
+        container.appendChild(p);
+        const btnRow = document.createElement("div");
+        btnRow.className = "footer";
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = "Activate";
+        btn.addEventListener("click", () => {
+          reshuffleDiscardsIntoDeck();
+          finalizePotionPerk(playerIdx, potionIdx);
+        });
+        btnRow.appendChild(btn);
+        const cancelBtn = document.createElement("button");
+        cancelBtn.className = "btn";
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+        });
+        btnRow.appendChild(cancelBtn);
+        container.appendChild(btnRow);
+      });
+      break;
+      
+    case "Witch's Chain":
+    case "Bind of the Forgotten":
+      // Lock a potion to require exact ingredients (no substitution)
+      const availablePotions = Object.entries(state.revealedPotions).filter(([_, p]) => p !== null);
+      if (availablePotions.length === 0) {
+        state.pendingAction = null;
+        return finalizePotionPerk(playerIdx, potionIdx);
+      }
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = "Lock a Potion";
+        container.appendChild(h);
+        const p = document.createElement("p");
+        p.textContent = potion.effect;
+        container.appendChild(p);
+        const row = document.createElement("div");
+        row.className = "choices";
+        availablePotions.forEach(([cat, pot]) => {
+          const btn = document.createElement("button");
+          btn.className = "btn";
+          btn.textContent = `${pot.name} (${cat})`;
+          btn.addEventListener("click", () => {
+            pot.noSubstitution = true;
+            finalizePotionPerk(playerIdx, potionIdx);
+          });
+          row.appendChild(btn);
+        });
+        container.appendChild(row);
+        const cancelBtn = document.createElement("button");
+        cancelBtn.className = "btn";
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+        });
+        container.appendChild(cancelBtn);
+      });
+      break;
+      
+    case "Lover's Whisper":
+    case "Wispwine":
+      // Request a card from others in turn order
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = "Request a Card";
+        container.appendChild(h);
+        const p = document.createElement("p");
+        p.textContent = potion.effect;
+        container.appendChild(p);
+        const input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "Enter card name";
+        input.style.width = "100%";
+        input.style.padding = "8px";
+        input.style.marginBottom = "10px";
+        container.appendChild(input);
+        const btnRow = document.createElement("div");
+        btnRow.className = "footer";
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = "Request";
+        btn.addEventListener("click", () => {
+          const cardName = input.value.trim();
+          if (!cardName) return;
+          
+          // Find first player in turn order who has it
+          let foundPlayer = null;
+          const currentIdx = state.activePlayer;
+          for (let i = 1; i < state.players.length; i++) {
+            const checkIdx = (currentIdx + i * state.direction + state.players.length) % state.players.length;
+            const other = state.players[checkIdx];
+            const cardIdx = other.hand.findIndex(c => c.name.toLowerCase() === cardName.toLowerCase());
+            if (cardIdx >= 0) {
+              foundPlayer = { player: other, cardIdx };
+              break;
+            }
+          }
+          
+          if (foundPlayer) {
+            const [card] = foundPlayer.player.hand.splice(foundPlayer.cardIdx, 1);
+            player.hand.push(card);
+          }
+          finalizePotionPerk(playerIdx, potionIdx);
+        });
+        btnRow.appendChild(btn);
+        const cancelBtn = document.createElement("button");
+        cancelBtn.className = "btn";
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+        });
+        btnRow.appendChild(cancelBtn);
+        container.appendChild(btnRow);
+      });
+      break;
+      
+    case "Petal Ward Elixir":
+    case "Basilisk Balm":
+      // Passive effect: Block action cards
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = "Passive Protection Activated";
+        container.appendChild(h);
+        const p = document.createElement("p");
+        p.textContent = potion.effect + " This effect is now active as a passive protection.";
+        container.appendChild(p);
+        const note = document.createElement("p");
+        note.style.fontSize = "0.9em";
+        note.style.fontStyle = "italic";
+        note.textContent = "Note: This is a passive effect. You can manually block the next action card played against you.";
+        container.appendChild(note);
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = "OK";
+        btn.addEventListener("click", () => {
+          // Mark that this player has action protection
+          player.hasActionProtection = true;
+          finalizePotionPerk(playerIdx, potionIdx);
+        });
+        container.appendChild(btn);
+      });
+      break;
+      
+    case "Heartfire Infusion":
+    case "Mirror Dew":
+      // Copy an ingredient from completed potions
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = "Wildcard Ingredient";
+        container.appendChild(h);
+        const p = document.createElement("p");
+        p.textContent = potion.effect;
+        container.appendChild(p);
+        const note = document.createElement("p");
+        note.style.fontSize = "0.9em";
+        note.style.fontStyle = "italic";
+        note.textContent = "This potion now acts as a wildcard that can substitute for any ingredient when crafting.";
+        container.appendChild(note);
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = "OK";
+        btn.addEventListener("click", () => {
+          // Mark this potion as a wildcard
+          potionData.actsAsWildcard = true;
+          finalizePotionPerk(playerIdx, potionIdx);
+        });
+        container.appendChild(btn);
+      });
+      break;
+      
+    case "Illusion's Glee":
+    case "Serpent's Luck":
+      // Passive effect: Pairs act as wildcards
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = "Wildcard Pairs Activated";
+        container.appendChild(h);
+        const p = document.createElement("p");
+        p.textContent = potion.effect;
+        container.appendChild(p);
+        const note = document.createElement("p");
+        note.style.fontSize = "0.9em";
+        note.style.fontStyle = "italic";
+        note.textContent = "Your pairs of matching cards can now be used as wildcards when crafting potions.";
+        container.appendChild(note);
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = "OK";
+        btn.addEventListener("click", () => {
+          // Mark that this player's pairs act as wildcards
+          player.pairsActAsWildcards = true;
+          finalizePotionPerk(playerIdx, potionIdx);
+        });
+        container.appendChild(btn);
+      });
+      break;
+    
+    case "Dreambinder Elixir":
+    case "Oracle's Dew":
+      // See top cards equal to players x2, order them
+      const numCards = state.players.length * 2;
+      const topCards = state.deck.slice(-numCards);
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = `Order Top ${numCards} Cards`;
+        container.appendChild(h);
+        const pEffect = document.createElement("p");
+        pEffect.textContent = potion.effect;
+        container.appendChild(pEffect);
+        const p = document.createElement("p");
+        p.textContent = "Drag cards to reorder them. Top card will be drawn first.";
+        container.appendChild(p);
+        
+        const cardsRow = document.createElement("div");
+        cardsRow.className = "cards";
+        container.appendChild(cardsRow);
+        
+        let orderedCards = [...topCards];
+        const renderCards = () => {
+          cardsRow.innerHTML = "";
+          orderedCards.forEach((c, idx) => {
+            const ce = cardElement(c, true);
+            ce.setAttribute("draggable", "true");
+            ce.style.cursor = "move";
+            ce.addEventListener("dragstart", (e) => {
+              e.dataTransfer.effectAllowed = "move";
+              e.dataTransfer.setData("text/plain", idx);
+            });
+            ce.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+            });
+            ce.addEventListener("drop", (e) => {
+              e.preventDefault();
+              const fromIdx = parseInt(e.dataTransfer.getData("text/plain"));
+              const toIdx = idx;
+              if (fromIdx !== toIdx) {
+                const [moved] = orderedCards.splice(fromIdx, 1);
+                orderedCards.splice(toIdx, 0, moved);
+                renderCards();
+              }
+            });
+            cardsRow.appendChild(ce);
+          });
+        };
+        renderCards();
+        
+        const btnRow = document.createElement("div");
+        btnRow.className = "footer";
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = "Confirm Order";
+        btn.addEventListener("click", () => {
+          // Remove old cards and add in new order
+          state.deck.splice(-numCards, numCards);
+          state.deck.push(...orderedCards);
+          finalizePotionPerk(playerIdx, potionIdx);
+        });
+        btnRow.appendChild(btn);
+        const cancelBtn = document.createElement("button");
+        cancelBtn.className = "btn";
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+        });
+        btnRow.appendChild(cancelBtn);
+        container.appendChild(btnRow);
+      });
+      break;
+      
+    default:
+      // For effects we haven't implemented yet, just mark as spent
+      openOverlay(container => {
+        container.appendChild(cardElement(potion, true));
+        const h = document.createElement("h3");
+        h.textContent = "Potion Effect";
+        container.appendChild(h);
+        const p = document.createElement("p");
+        p.textContent = potion.effect || "This potion effect is not yet fully implemented.";
+        container.appendChild(p);
+        const btnRow = document.createElement("div");
+        btnRow.className = "footer";
+        const btn = document.createElement("button");
+        btn.className = "btn";
+        btn.textContent = "OK";
+        btn.addEventListener("click", () => finalizePotionPerk(playerIdx, potionIdx));
+        btnRow.appendChild(btn);
+        const cancelBtn = document.createElement("button");
+        cancelBtn.className = "btn";
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          state.pendingAction = null;
+          closeOverlay();
+        });
+        btnRow.appendChild(cancelBtn);
+        container.appendChild(btnRow);
+      });
+      break;
+  }
+}
+
+function finalizePotionPerk(playerIdx, potionIdx) {
+  const player = state.players[playerIdx];
+  const potionData = player.potions[potionIdx];
+  if (potionData) {
+    potionData.faceUp = false; // Mark as spent
+  }
+  state.pendingAction = null;
+  closeOverlay();
+  renderAll();
 }
 
 function clearSelection() {
@@ -1158,6 +2102,66 @@ function sortActiveHandByCategory() {
     const kb = orderKey(b).toLowerCase();
     if (ka < kb) return -1; if (ka > kb) return 1; return 0;
   });
+  if (onlineMode && socket) {
+    const ids = sorted.map(c => c.id).filter(Boolean);
+    socket.emit('reorder', ids);
+  } else {
+    player.hand = sorted;
+    state.selectedIndices = [];
+    renderPlayers();
+  }
+}
+
+function sortActiveHandByPotions() {
+  if (state.gameMode !== 2) return;
+  
+  const player = state.players[state.activePlayer];
+  
+  // Build ordered list of ingredients from revealed potions
+  const potionIngredients = [];
+  const categories = ["Maleficia", "Benedicta", "Fortuna"];
+  
+  for (const cat of categories) {
+    const potion = state.revealedPotions[cat];
+    if (potion && potion.ingredients) {
+      for (const ing of potion.ingredients) {
+        // Only add if not already in the list (first occurrence has priority)
+        if (!potionIngredients.includes(ing)) {
+          potionIngredients.push(ing);
+        }
+      }
+    }
+  }
+  
+  // Sort hand: ingredients in potions (by order) -> other ingredients -> actions
+  const sorted = [...player.hand].sort((a, b) => {
+    const aIsAction = a.type === "action";
+    const bIsAction = b.type === "action";
+    
+    // Actions go to the end
+    if (aIsAction && !bIsAction) return 1;
+    if (!aIsAction && bIsAction) return -1;
+    if (aIsAction && bIsAction) return 0;
+    
+    // Both are ingredients
+    const aIndex = potionIngredients.indexOf(a.name);
+    const bIndex = potionIngredients.indexOf(b.name);
+    const aInPotion = aIndex >= 0;
+    const bInPotion = bIndex >= 0;
+    
+    // Cards in potions come before cards not in potions
+    if (aInPotion && !bInPotion) return -1;
+    if (!aInPotion && bInPotion) return 1;
+    
+    // Both in potions: sort by position in potion list
+    if (aInPotion && bInPotion) {
+      return aIndex - bIndex;
+    }
+    
+    // Both not in potions: maintain current order or sort by name
+    return a.name.localeCompare(b.name);
+  });
+  
   if (onlineMode && socket) {
     const ids = sorted.map(c => c.id).filter(Boolean);
     socket.emit('reorder', ids);
@@ -1244,6 +2248,22 @@ function checkWinAfterMeld(player) {
     state.winnerId = player.id;
     // Optional: alert for quick feedback
     try { alert(`${player.name} wins the round!`); } catch (e) {}
+  }
+}
+
+function checkWinAfterCraft(player) {
+  if (state.gameMode !== 2) return;
+  
+  const potions = player.potions || [];
+  const categories = potions.map(p => p.potion.category);
+  const hasM = categories.includes("Maleficia");
+  const hasB = categories.includes("Benedicta");
+  const hasF = categories.includes("Fortuna");
+  
+  if (hasM && hasB && hasF) {
+    state.gameOver = true;
+    state.winnerId = player.id;
+    showWin(player.name);
   }
 }
 
